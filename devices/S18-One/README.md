@@ -1,5 +1,3 @@
-## Sonos One (S18)
-
 ![S18](images/s18-one.png?raw=true)
 
 ### Overview
