@@ -1,0 +1,119 @@
+AXG:BL1:d1dbf2:a4926f;FEAT:F0D4219C:3000;POC:F;EMMC:0;READ:0;0.0;0.0;CHK:0;
+sdio debug board detected
+TE: 201193
+
+BL2 Built : 17:22:55, Oct  4 2018. axg g - secbuild@LIN-200
+
+set vcck to 1100 mv
+set vddee to 950 mv
+Board ID = 8
+CPU clk: 1200MHz
+DDR3 chl: Rank0 16bit @ 912MHz
+bist_test rank: 0 1b 04 32 24 0c 3c 1e 07 35 26 0e 3e 00 00 00 00 00 00 00 00 00 00 00 00 772   - PASS
+Rank0: 1024MB(auto)-2T-13
+AddrBus test pass!
+-s
+my cpuid 25:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:
+whitelist check completed
+Load FIP HDR from eMMC, src: 0x0000c200, des: 0x01700000, size: 0x00004000
+emmc load img ok
+Load BL3x from eMMC, src: 0x00010200, des: 0x01704000, size: 0x000b4000
+emmc load img ok
+NOTICE:  BL31: v1.3(release):ee6c709
+NOTICE:  BL31: Built : 12:35:15, May  1 2018
+NOTICE:  BL31: AXG secure boot!
+[Image: axg_v1.1.3255-86bca5b-dirty 2018-08-09 12:22:25 alex.deng@droid13-sz]
+OPS=0x23
+22 51 40 f6 be 6 e8 60 af 8e 42 bc bl30:axg ver: 9 mode: 0
+bl30:axg thermal0
+[0.017586 Inits done]
+secure task start!
+high task start!
+low task start!
+��ROR: tnitializing runtime service opteed_fast
+
+U-Boot 2016.11-A113-Strict-Rev0.14 (Oct 04 2018 - 17:21:58 -0400), Build: jenkins-mainline-uboot-ondemand-87
+
+SoC:   Amlogic A113
+Board: Sonos Tupelo Revision 0x01
+I2C:   ready
+DRAM:  1 GiB
+MMC:   SDIO Port C: 0
+*** Warning - bad CRC, using default environment
+
+PCI:
+  00:00.0     - 16c3:abcd - Bridge device
+   01:00.0    - 14c3:7615 - Build before PCI Rev2.0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   dwmac.ff3f0000
+checking cpuid whitelist (my cpuid is 25:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE)...
+whitelist check completed
+Hit any key to stop autoboot:  0
+burn_at_boot: DISABLE_JTAG fuse already set
+pending_unlock: no pending DevUnlock
+Image header on sect 0
+        Magic:          536f7821
+        Version                1
+        Bootgen                0
+        Kernel Offset         40
+        Kernel Checksum 7617c654
+        Kernel Length     69d89c
+        Rootfs Offset          0
+        Rootfs Checksum        0
+        Rootfs Length          0
+        Rootfs Format          2
+Image header on sect 1
+        Magic:          536f7821
+        Version       40
+        Kernel Checksum 7617c654
+        Kernel Length     69d89c
+        Rootfs Offset          0
+        Rootfs Checksum        0
+        Rootfs Length          0
+        Rootfs Format          2
+Both headers OK,Length          0
+        Rootfs Format          2
+Both headers OK, bootgens 0 2
+uboot: section-1 selected
+boot_state 0
+364 byte kernel signature verified successfully
+disable_usb: DISABLE_USB_BOOT fuse already set
+srk_fuses: not revoking any more SRK keys (0x1)
+srk_fuses: locking SRK revocation fuses
+Start the watchdog timer before starting the kernel...
+## Loading kernel from FIT Image at 00100040 ...
+   Using 'conf@18' configuration
+   Trying 'kernel@1' kernel subimage
+     Description:  Sonos Linux kernel for A113
+     Type:         Kernel Image
+     Compression:  gzip compressed
+     Data Start:   0x00100128
+     Data Size:    6735332 Bytes = 6.4 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: 0x01080000
+     Entry Point:  0x01080000
+     Hash algo:    crc32
+     Hash value:   1fe7e1a4
+   Verifying Hash Integrity ... crc32+ OK
+## Loading fdt from FIT Image at 00100040 ...
+   Using 'conf@18' configuration
+   Trying 'fdt@18' fdt subimage
+     Description:  Flattened Device Tree Sonos Tupelo V1
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x00795148
+     Data Size:    32561 Bytes = 31.8 KiB
+     Architecture: AArch64
+     Hash algo:    crc32
+     Hash value:   7a0d253a
+   Verifying Hash Integrity ... crc32+ OK
+   Booting using the fdt blob at 0x795148
+   Uncompressing Kernel Image ... OK
+   Loading Device Tree to 000000003f3f2000, end 000000003f3fcf30 ... OK
+
+Starting kernel ...
+
+domain-0 init dvfs: 4

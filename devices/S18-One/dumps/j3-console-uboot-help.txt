@@ -1,0 +1,176 @@
+AXG:BL1:d1dbf2:a4926f;FEAT:F0D4219C:3000;POC:F;EMMC:0;READ:0;0.0;0.0;CHK:0;
+sdio debug board detected
+TE: 201218
+
+BL2 Built : 17:22:55, Oct  4 2018. axg g - secbuild@LIN-200
+
+set vcck to 1100 mv
+set vddee to 950 mv
+Board ID = 6
+CPU clk: 1200MHz
+DDR3 chl: Rank0 16bit @ 912MHz
+bist_test rank: 0 1b 04 32 24 0c 3d 1d 06 35 25 0d 3d 00 00 00 00 00 00 00 00 00 00 00 00 772   - PASS
+Rank0: 1024MB(auto)-2T-13
+AddrBus test pass!
+-s
+my cpuid 25:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:
+whitelist check completed
+Load FIP HDR from eMMC, src: 0x0000c200, des: 0x01700000, size: 0x00004000
+emmc load img ok
+Load BL3x from eMMC, src: 0x00010200, des: 0x01704000, size: 0x000b4000
+emmc load img ok
+NOTICE:  BL31: v1.3(release):ee6c709
+NOTICE:  BL31: Built : 12:35:15, May  1 2018
+NOTICE:  BL31: AXG secure boot!
+[Image: axg_v1.1.3255-86bca5b-dirty 2018-08-09 12:22:25 alex.deng@droid13-sz]
+OPS=0x23
+22 51 40 f6 be 6 e8 60 af 8e 42 bc bl30:axg ver: 9 mode: 0
+bl30:axg thermal0
+[0.017577 Inits done]
+secure task start!
+high task start!
+low task start!
+��ROR: tnitializing runtime service opteed_fast
+
+U-Boot 2016.11-A113-Strict-Rev0.14 (Oct 04 2018 - 17:21:58 -0400), Build: jenkins-mainline-uboot-ondemand-87
+
+SoC:   Amlogic A113
+Board: Sonos Tupelo Revision 0x01
+I2C:   ready
+DRAM:  1 GiB
+MMC:   SDIO Port C: 0
+*** Warning - bad CRC, using default environment
+
+PCI:
+  00:00.0     - 16c3:abcd - Bridge device
+   01:00.0    - 14c3:7615 - Build before PCI Rev2.0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   dwmac.ff3f0000
+checking cpuid whitelist (my cpuid is 25:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE)...
+whitelist check completed
+Hit any key to stop autoboot:  0
+
+Sonos Tupelo > help
+boot    - boot default, i.e., run 'bootcmd'
+ddp     - ddputil - Diagnostic Data Page utility
+ddr     - DDR memory Bank-Row-Col Access Test
+diag    - perform board diagnostics
+help    - print command description/usage
+i2c     - I2C sub-system
+memtest - memtest Memory sub-system
+ping    - send ICMP ECHO_REQUEST to network host
+printenv- print environment variables
+reset   - Perform RESET of the CPU
+run     - run commands in an environment variable
+saveenv - save environment variables to persistent storage
+setenv  - set environment variables
+sleep   - delay execution for some time
+sonosboot- Boot the freshest section (or optionally the least fresh)
+unlock  - device unlock
+update  - Upgrade U-boot image on flash
+usb     - USB sub-system
+version - print monitor, compiler and linker version
+
+Sonos Tupelo > printenv
+baudrate=115200
+bootcmd=sonosboot
+bootdelay=2
+ethact=dwmac.ff3f0000
+ethaddr=78:28:ca:co:ff:ee
+hostname=arm_gxbb
+loadaddr=0x0100000
+stderr=serial
+stdin=serial
+stdout=serial
+
+Environment size: 193/131068 bytes
+Sonos Tupelo > usb
+usb - USB sub-system
+
+Usage:
+usb start - start (scan) USB controller
+usb reset - reset (rescan) USB controller
+usb stop [f] - stop USB [f]=force stop
+usb tree - show USB device tree
+usb info [dev] - show available USB devices
+
+Sonos Tupelo > usb info
+USB is stopped. Please issue 'usb start' first.
+Sonos Tupelo > usb start
+starting USB...
+USB0:   USB3.0 XHCI init start
+Register 1000140 NbrPorts 1
+Starting the controller
+USB XHCI 1.00
+scanning bus 0 for devices... 1 USB Device(s) found
+       scanning usb for ethernet devices... 0 Ethernet Device(s) found
+
+Sonos Tupelo > usb info
+1: Hub,  USB Revision 3.0
+ - U-Boot XHCI Host Controller
+ - Class: Hub
+ - PacketSize: 9  Configurations: 1
+ - Vendor: 0x0000  Product 0x0000 Version 1.0
+   Configuration: 1
+   - Interfaces: 1 Self Powered 0mA
+     Interface: 0
+     - Alternate Setting 0, Endpoints: 1
+     - Class Hub
+     - Endpoint 1 In Interrupt MaxPacket 8 Interval 255ms
+
+Sonos Tupelo > usb tree
+USB device tree:
+  1  Hub (5 Gb/s, 0mA)
+     U-Boot XHCI Host Controller
+
+Sonos Tupelo > help
+boot    - boot default, i.e., run 'bootcmd'
+ddp     - ddputil - Diagnostic Data Page utility
+ddr     - DDR memory Bank-Row-Col Access Test
+diag    - perform board diagnostics
+help    - print command description/usage
+i2c     - I2C sub-system
+memtest - memtest Memory sub-system
+ping    - send ICMP ECHO_REQUEST to network host
+printenv- print environment variables
+reset   - Perform RESET of the CPU
+run     - run commands in an environment variable
+saveenv - save environment variables to persistent storage
+setenv  - set environment variables
+sleep   - delay execution for some time
+sonosboot- Boot the freshest section (or optionally the least fresh)
+unlock  - device unlock
+update  - Upgrade U-boot image on flash
+usb     - USB sub-system
+version - print monitor, compiler and linker version
+
+Sonos Tupelo > diag
+Available hardware tests:
+  t01             - Memory data pattern Test
+  t02             - Memory Walking Addr Bit Test
+  t03             - Memory Walking Data Bit Test
+  t04             - Memory Random Cell Test
+  t05             - Memory DDR Addr Stress Pattern Test
+  t06             - Temperature sensor Test
+  t07             - OAD Chip Built-In Self Test
+  t08             - OAD Chip ID Test
+  t09             - OAD Chip Access Test
+  t10             - External Enet Loopback Test
+  t11             - Ethernet Switch Device ID Test
+  t12             - External Crystal Verify Test
+Use 'diag [<test1> [<test2> ...]]' to get more info.
+Use 'diag run [<test1> [<test2> ...]]' to run tests.
+
+Sonos Tupelo > version
+
+U-Boot 2016.11-A113-Strict-Rev0.14 (Oct 04 2018 - 17:21:58 -0400)
+aarch64-ca53-linux-gnueabi-gcc (crosstool-NG crosstool-ng-1.23.0 - allen.antony@sonos.com) 6.3.0
+GNU ld (crosstool-NG crosstool-ng-1.23.0 - allen.antony@sonos.com) 2.28
+
+Sonos Tupelo > reset
+resetting ...
+bl31 reboot reason: 0xd
+bl31 reboot reason: 0x0
+system cmd  1.
