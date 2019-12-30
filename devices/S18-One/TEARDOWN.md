@@ -5,7 +5,7 @@ in order to access the logic board.
 
 ### Tools
 
-* T5 Torx Screwdriver
+* T8 Torx Screwdriver
 * T10 Torx Screwdriver
 * Plastic Spudger
 
@@ -31,7 +31,7 @@ in order to access the logic board.
 
 ![teardown-007.jpg](./images/photographs/teardown-007.jpg?raw=true)
 
-6. Turn the device onto its front, and remove the four visible T5 Torx
+6. Turn the device onto its front, and remove the four visible T8 Torx
 screws. In addition to this, gently cut the plastic film covering the
 four additional screws near the top of the unit.
 
@@ -40,7 +40,7 @@ four additional screws near the top of the unit.
 7. Remove the top of the unit. The flex cable will need to be carefully
 disconnected from its associated connector on the top part of the unit
 before the top can be separated from the rest of the unit. An additional
-two T5 torx screws can then be accessed and removed.
+two T8 torx screws can then be accessed and removed.
 
 ![teardown-009.jpg](./images/photographs/teardown-009.jpg?raw=true)
 
