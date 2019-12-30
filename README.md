@@ -13,7 +13,7 @@ can be repurposed - ideally via software modification.
 Support / validation against the following devices is currently being worked
 on:
 
-* [Sonos One (Generation 2) / S18](devices/S18-One/README.md)
+* [Sonos One (Generation 2) [S18]](devices/S18-One/README.md)
 
 ## Collaboration
 
