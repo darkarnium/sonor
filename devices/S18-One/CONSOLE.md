@@ -23,4 +23,4 @@ The boot-time output from the unit can be found in the following text dump:
 A brief summary of the options available at the U-Boot prompt can be found
 in the following text dump:
 
-* [J3-Console-Uboot.txt](./dumps/j3-console-uboot.txt)
+* [J3-Console-Uboot-Help.txt](./dumps/j3-console-uboot-help.txt)
