@@ -14,5 +14,6 @@ The following pages contain more information about the respective components
 / areas of this device.
 
 * [Tear Down](./TEARDOWN.md)
+* [Bill Of Materials](./BOM.md)
 * [Serial Console](./CONSOLE.md)
 * [JTAG / SWD](JTAGSWD.md)
