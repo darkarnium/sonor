@@ -23,7 +23,8 @@ The following pages contain more information about the respective components
 * [Tear Down](./TEARDOWN.md)
 * [Bill Of Materials](./BOM.md)
 * [Serial Console](./CONSOLE.md)
-* [JTAG / SWD](JTAGSWD.md)
+* [JTAG / SWD](./JTAGSWD.md)
+* [GPL / Sources](./sources/README.md)
 
 ### References
 
