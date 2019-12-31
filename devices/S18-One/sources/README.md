@@ -20,3 +20,12 @@ order to clone these:
 cd ../../../
 git submodule update --init
 ```
+
+### U-Boot
+
+Though far from identical to the Sonos unit, the submoduled U-Boot sources
+contain support for an Amlogic S400 development board. This board appears to
+use the same SoC, and may serve as a reference point for how the Sonos U-Boot
+image _may_ have been constructed - given that this is propriatary.
+
+* [Amlogic S400 README](./u-boot-amlogic/board/amlogic/s400/README)
