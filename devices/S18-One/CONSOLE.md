@@ -24,3 +24,17 @@ A brief summary of the options available at the U-Boot prompt can be found
 in the following text dump:
 
 * [J3-Console-Uboot-Help.txt](./dumps/j3-console-uboot-help.txt)
+
+Based on the Sonos employee email in the U-Boot version string it is likely
+that this version of U-Boot is customised for Sonos. It likely also contains
+Amlogic provided U-Boot patches for the A113 SoC.
+
+Unfortunately, it appears that `tftp`, `base`, and other commands which may
+assist in either dumping or loading data from U-Boot have been removed.
+
+Although the full scope of the differences between vanilla U-Boot, and the
+Sonos `U-Boot 2016.11-A113-Strict-Rev0.14` version used by this unit are
+currently unknown the 'vanilla' U-Boot sources for `2016.11` can be found
+at the following URL:
+
+* [U-Boot 2016.11](https://github.com/u-boot/u-boot/tree/29e0cfb4f77f7aa369136302cee14a91e22dca71)
