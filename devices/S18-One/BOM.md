@@ -11,6 +11,8 @@ One (Generation 2) [S18].
 |TFBGA|Nanya|NT5CC512M8EQ|DDR3(L) 4Gb SDRAM (512MB)|U75|Logic Board|
 |VQFN|TI|DP83822I|10/100Mbps Ethernet PHY|U17|Logic Board|
 |QFN|Cypress|CY8C4245LQI|PSoC 4200 (ARM Cortex-M0)|U1|Microphone Board|
+|TFBGA|Mediatek|MT7615N|"Router-on-a-chip" 5-port 10/100/1000 PHY, 1 RGMII|U10|Radio Board|
+|DFN8|ST|M24C64|64-Kbit EEPROM (i2c)|U13|Radio Board|
 
 ### Data Sheets
 
@@ -19,3 +21,5 @@ One (Generation 2) [S18].
 * [Kingston NT5CC512M8EQ](https:///)
 * [Cypress CY8C4245LQI](https://www.cypress.com/file/138656/download)
 * [TI DP83822I](http://www.ti.com/lit/ds/symlink/dp83822i.pdf)
+* [Mediatek MT7615N](https:///)
+* [ST M24C64](https://www.st.com/resource/en/datasheet/m24c64-r.pdf)

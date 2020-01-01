@@ -24,6 +24,7 @@ The following pages contain more information about the respective components
 * [Bill Of Materials](./BOM.md)
 * [Serial Console](./CONSOLE.md)
 * [JTAG / SWD](./JTAGSWD.md)
+* [EEPROM](./EEPROM.md)
 * [GPL / Sources](./sources/README.md)
 
 ### References
