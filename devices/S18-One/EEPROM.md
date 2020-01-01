@@ -22,4 +22,4 @@ In order to get better access to the EEPROM, the clock and data pins for the
 i2c bus the EEPROM is connected to is exposed via `TP18` (`SCK`) and `TP20`
 (`SDA`) on the radio board.
 
-![i2c Radio EEPROM](./devices/S18-One/images/photographs/radio-i2c-001.jpg?raw=true)
+![i2c Radio EEPROM](./images/photographs/radio-i2c-001.jpg?raw=true)
