@@ -20,13 +20,13 @@ SoC itself appears to be restricted.
 The following pages contain more information about the respective components
 / areas of this device.
 
-* [1. Tear Down](./TEARDOWN.md)
-* [2. Bill Of Materials](./BOM.md)
-* [3. Serial Console](./CONSOLE.md)
-* [4. U-Boot](./UBOOT.md)
-* [5. EEPROM](./EEPROM.md)
-* [6. JTAG / SWD](./JTAGSWD.md)
-* [7. GPL / Sources](./sources/README.md)
+1. [Tear Down](./TEARDOWN.md)
+1. [Bill Of Materials](./BOM.md)
+1. [Serial Console](./CONSOLE.md)
+1. [U-Boot](./UBOOT.md)
+1. [EEPROM](./EEPROM.md)
+1. [JTAG / SWD](./JTAGSWD.md)
+1. [GPL / Sources](./sources/README.md)
 
 ### References
 
