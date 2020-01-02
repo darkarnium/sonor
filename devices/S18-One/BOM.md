@@ -14,6 +14,15 @@ One (Generation 2) [S18].
 |TFBGA|Mediatek|MT7615N|"Router-on-a-chip" 5-port 10/100/1000 PHY, 1 RGMII|U10|Radio Board|
 |DFN8|ST|M24C64|64-Kbit EEPROM (i2c)|U13|Radio Board|
 
+### Flattened DeviceTree (FDT)
+
+The FDT was successfully extracted over the `i2c` bus and converted back to
+DTS format - using the `dtc` utility. This tree contains information about
+components, their addressing, and other parameters which may be of
+assistance.
+
+* [Sonos-Tupelo-v1.dts](./dumps/sonos-tupelo-v1.dts)
+
 ### Data Sheets
 
 * [Amlogic A113D](https:///)
