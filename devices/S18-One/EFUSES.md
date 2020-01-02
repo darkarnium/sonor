@@ -3,7 +3,8 @@
 The following has been extracted from the efuse driver from the Sonos GPL
 sources:
 
-|Index|Name|Expected Length|
+|Index|Name|Expected Length (Bytes)|
+|-|-|-|
 |0|`ENABLE_SECURE_BOOT`|1|
 |1|`ENABLE_ENCRYPTION`|1|
 |2|`REVOKE_KPUB_0`|1|
