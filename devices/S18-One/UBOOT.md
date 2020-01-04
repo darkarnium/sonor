@@ -41,7 +41,16 @@ A write-what-where primitive is possible by using the i2c bus, and a writable
 register on a device already present - such as the PWM register of the LP5562
 LED controller. This process effectively abuses the i2c bus and the LP5562 LED
 controller (which controls the lights on the top of the unit) in order to
-provide a write-what-where primitive for run-time patching of U-Boot.
+provide a 'staging area' for bytes to allow for run-time patching of U-Boot.
+
+#### Example: Patch the version string.
+
+This example simply overwrites part of the U-Boot version string. No more,
+no less.
+
+* [write-what-where.py](./scripts/write-what-where.py)
+
+#### Example: Console 'enable'
 
 The crux of this example is to flip the `op` bit to convert instruction
 `CBZ` (`0x34`) to `CBNZ` (`0x35`) in the `sonosboot` U-Boot command. This
