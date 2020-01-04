@@ -166,8 +166,8 @@ Use 'diag run [<test1> [<test2> ...]]' to run tests.
 Sonos Tupelo > version
 
 U-Boot 2016.11-A113-Strict-Rev0.14 (Oct 04 2018 - 17:21:58 -0400)
-aarch64-ca53-linux-gnueabi-gcc (crosstool-NG crosstool-ng-1.23.0 - allen.antony@sonos.com) 6.3.0
-GNU ld (crosstool-NG crosstool-ng-1.23.0 - allen.antony@sonos.com) 2.28
+aarch64-ca53-linux-gnueabi-gcc (crosstool-NG crosstool-ng-1.23.0 - xxxxxxxxxxxxxxxxxxxxxxxxx) 6.3.0
+GNU ld (crosstool-NG crosstool-ng-1.23.0 - xxxxxxxxxxxxxxxxxxxxxxxxx) 2.28
 
 Sonos Tupelo > reset
 resetting ...
