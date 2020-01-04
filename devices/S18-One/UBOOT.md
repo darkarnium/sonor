@@ -60,7 +60,7 @@ i2c write 0x82000030 0x51 0x00 0x1
 1. Read initial opcode bits from instruction at `0x1005830` to LED controller
 (`LP5562`) PWM register.
 ```
-i2c write 0x17408c3 0x30 0x70 0x1
+i2c write 0x3ff26833 0x30 0x70 0x1
 ```
 
 2. Get the initial instruction value from the LP5562 PWM register to ensure
@@ -81,13 +81,13 @@ i2c md 0x30 0x70 0x1
 4. Read the new instruction from the i2c bus into memory over the top of the
 old `CBZ` instruction.
 ```
-i2c read 0x30 0x70 0x1 0x17408c3
+i2c read 0x30 0x70 0x1 0x3ff26833
 ```
 
 5. Confirm the write by reading back to the PWM register to confirm the write
 was successful.
 ```
-i2c write 0x17408c3 0x30 0x70 0x1
+i2c write 0x3ff26833 0x30 0x70 0x1
 i2c md 0x30 0x70 0x1
 ```
 
