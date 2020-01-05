@@ -159,7 +159,7 @@ $ python3 i2c-thief.py 0x10051F0 0x10051F4
 # 0x10051F0 - LDR	W1, [X29, #200] - (A1 CB 40 B9)
 # 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 1 0 1 1 1 0 1 0 0 0 0 1
 #                     \_____________________/\________/\________/
-#					           IMM12			Rn         Rt
+#                              IMM12			Rn         Rt
 #
 $ python3 i2c-thief.py 0x10051F0 0x10051F4
 $ python3 write-what-where.py 0x10051F1 0xCB
@@ -240,7 +240,7 @@ $ python3 write-what-where.py 0x1005025 0xD3
 
 Use the now modified `mdp sw_features` command to write the following flags
 to `mdp_authorized_flags`. This should be done via a terminal emulator if
-performed interactively, as a 'Really modify MDP info <y/N>' prompt must be
+performed interactively, as a `Really modify MDP info <y/N>` prompt must be
 answered before writes will occur:
 
 ```shell
