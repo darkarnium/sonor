@@ -30,43 +30,43 @@ struct smdp {
 #define MDP_SERIES_ID_LENGTH 4
 
 struct manufacturing_data_page {
-	uint32_t mdp_magic;
-	uint32_t mdp_vendor;
-	uint32_t mdp_model;
-	uint32_t mdp_submodel;
-	uint32_t mdp_revision;
-	uint8_t mdp_serial[8];
-	uint32_t mdp_region;
-	uint32_t mdp_reserved;
-	char mdp_copyright_statement[64];
-	uint32_t mdp_flags;
-	uint32_t mdp_hwfeatures;
-	uint8_t mdp_ch11spurimmunitylevel;
-	uint8_t mdp_reserved2[3];
-	uint32_t mdp_version;
-	uint32_t mdp2_version;
-	uint32_t mdp3_version;
-	uint32_t mdp_pages_present;
-	uint32_t mdp_authorized_flags;
-	uint32_t mdp_unused;
-	uint32_t mdp_fusevalue;
-	uint32_t mdp_sw_features;
-	char mdp_pin[MDP_PIN_LENGTH];
-	char mdp_series_id[MDP_SERIES_ID_LENGTH];
-	uint8_t mdp_reserved3[100];
-	union {
-		uint8_t u_reserved[256];
-		struct {
-			int32_t mdp_zp_dcofs[4];
-		} zp;
-	} u;
+    uint32_t mdp_magic;
+    uint32_t mdp_vendor;
+    uint32_t mdp_model;
+    uint32_t mdp_submodel;
+    uint32_t mdp_revision;
+    uint8_t mdp_serial[8];
+    uint32_t mdp_region;
+    uint32_t mdp_reserved;
+    char mdp_copyright_statement[64];
+    uint32_t mdp_flags;
+    uint32_t mdp_hwfeatures;
+    uint8_t mdp_ch11spurimmunitylevel;
+    uint8_t mdp_reserved2[3];
+    uint32_t mdp_version;
+    uint32_t mdp2_version;
+    uint32_t mdp3_version;
+    uint32_t mdp_pages_present;
+    uint32_t mdp_authorized_flags;
+    uint32_t mdp_unused;
+    uint32_t mdp_fusevalue;
+    uint32_t mdp_sw_features;
+    char mdp_pin[MDP_PIN_LENGTH];
+    char mdp_series_id[MDP_SERIES_ID_LENGTH];
+    uint8_t mdp_reserved3[100];
+    union {
+        uint8_t u_reserved[256];
+        struct {
+            int32_t mdp_zp_dcofs[4];
+        } zp;
+    } u;
 };
 ```
 
 ```c
 struct manufacturing_data_page2 {
-	uint32_t mdp2_magic;
-	uint32_t mdp2_keylen;
+    uint32_t mdp2_magic;
+    uint32_t mdp2_keylen;
     union {
         uint8_t mdp2_key[4088];
         struct {
