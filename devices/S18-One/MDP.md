@@ -278,7 +278,7 @@ MDP mdp2_version 5
 MDP mdp3_version 2
 MDP mdp_pages_present 7
 MDP auth_flags 3b
-MDP sw_features 0
+MDP sw_features 3b
 Sonos Tupelo > ^C
 ```
 
