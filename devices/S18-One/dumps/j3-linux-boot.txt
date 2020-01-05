@@ -1,0 +1,505 @@
+Sonos Tupelo > sonosboot
+burn_at_boot: DISABLE_JTAG fuse already set
+pending_unlock: no pending DevUnlock
+Image header on sect 0
+        Magic:          536f7821
+        Version                1
+        Bootgen                0
+        Kernel Offset         40
+        Kernel Checksum 7617c654
+        Kernel Length     69d89c
+        Rootfs Offset          0
+        Rootfs Checksum        0
+        Rootfs Length          0
+        Rootfs Format          2
+Image header on sect 1
+        Magic:          536f7821
+        Version                1
+        Bootgen                2
+        Kernel Offset         40
+        Kernel Checksum 7617c654
+        Kernel Length     69d89c
+        Rootfs Offset          0
+        Rootfs Checksum        0
+        Rootfs Length          0
+        Rootfs Format          2
+Both headers OK, bootgens 0 2
+uboot: section-1 selected
+boot_state 0
+364 byte kernel signature verified successfully
+disable_usb: DISABLE_USB_BOOT fuse already set
+srk_fuses: not revoking any more SRK keys (0x1)
+srk_fuses: locking SRK revocation fuses
+Start the watchdog timer before starting the kernel...
+## Loading kernel from FIT Image at 00100040 ...
+   Using 'conf@18' configuration
+   Trying 'kernel@1' kernel subimage
+     Description:  Sonos Linux kernel for A113
+     Type:         Kernel Image
+     Compression:  gzip compressed
+     Data Start:   0x00100128
+     Data Size:    6735332 Bytes = 6.4 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: 0x01080000
+     Entry Point:  0x01080000
+     Hash algo:    crc32
+     Hash value:   1fe7e1a4
+   Verifying Hash Integrity ... crc32+ OK
+## Loading fdt from FIT Image at 00100040 ...
+   Using 'conf@18' configuration
+   Trying 'fdt@18' fdt subimage
+     Description:  Flattened Device Tree Sonos Tupelo V1
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x00795148
+     Data Size:    32561 Bytes = 31.8 KiB
+     Architecture: AArch64
+     Hash algo:    crc32
+     Hash value:   7a0d253a
+   Verifying Hash Integrity ... crc32+ OK
+   Booting using the fdt blob at 0x795148
+   Uncompressing Kernel Image ... OK
+   Loading Device Tree to 000000003f3f2000, end 000000003f3fcf30 ... OK
+
+Starting kernel ...
+
+[    0.000000@0] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000@0] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
+[    0.000000@0] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.000000@0] Memory: 994508K/1047552K available (7102K kernel code, 488K rwdata, 2192K rodata, 2240K init, 902K bss, 32564K reserved, 20480K cma-reserved)
+[    0.000000@0] Virtual kernel memory layout:
+[    0.000000@0]     modules : 0xffffff8000000000 - 0xffffff8008000000   (   128 MB)
+[    0.000000@0]     vmalloc : 0xffffff8008000000 - 0xffffffbebfff0000   (   250 GB)
+[    0.000000@0]       .text : 0xffffff8009080000 - 0xffffff8009770000   (  7104 KB)
+[    0.000000@0]     .rodata : 0xffffff8009770000 - 0xffffff80099a0000   (  2240 KB)
+[    0.000000@0]       .init : 0xffffff80099a0000 - 0xffffff8009bd0000   (  2240 KB)
+[    0.000000@0]       .data : 0xffffff8009bd0000 - 0xffffff8009c4a008   (   489 KB)
+[    0.000000@0]        .bss : 0xffffff8009c4a008 - 0xffffff8009d2bb84   (   903 KB)
+[    0.000000@0]     fixed   : 0xffffffbefe7fd000 - 0xffffffbefec00000   (  4108 KB)
+[    0.000000@0]     PCI I/O : 0xffffffbefee00000 - 0xffffffbeffe00000   (    16 MB)
+[    0.000000@0]     vmemmap : 0xffffffbf00000000 - 0xffffffc000000000   (     4 GB maximum)
+[    0.000000@0]               0xffffffbf00004000 - 0xffffffbf01000000   (    15 MB actual)
+[    0.000000@0]     memory  : 0xffffffc000100000 - 0xffffffc040000000   (  1023 MB)
+[    0.000000@0] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000@0] Preemptible hierarchical RCU implementation.
+[    0.000000@0]        Build-time adjustment of leaf fanout to 64.
+[    0.000000@0]        RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=4.
+[    0.000000@0] RCU: Adjusting geometry for rcu_fanout_leaf=64, nr_cpu_ids=4
+[    0.000000@0] NR_IRQS:64 nr_irqs:64 0
+[    0.000000@0] axg_aoclkc_init: register ao clk ok![    0.000000@0] axg_amlogic_init_sdemmc: register amlogic sdemmc clk
+[    0.000000@0] axg_amlogic_init_sdemmc: register amlogic sdemmc clk
+[    0.000000@0] axg_amlogic_init_media: register meson media clk
+[    0.000000@0] axg_amlogic_init_misc: register amlogic axg misc clks
+[    0.000000@0] axg_amlogic_init_misc: register amlogic sdemmc clk
+[    0.000000@0] axg_clkc_init initialization complete
+[    0.000000@0] arm_arch_timer: Architected cp15 timer(s) running at 24.00MHz (phys).
+[    0.000000@0] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000004@0] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.008249@0] meson_bc_timer: mclk->mux_reg =ffffff8008008190,mclk->reg =ffffff800800a194
+[    0.016765@0] Console: colour dummy device 80x25
+[    0.021106@0] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.031586@0] pid_max: default: 32768 minimum: 301
+[    0.036457@0] Security Framework initialized
+[    0.040695@0] SELinux:  Initializing.
+[    0.044429@0] Mount-cache hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.051283@0] Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.059450@0] sched-energy: CPU device node has no sched-energy-costs
+[    0.065140@0] Invalid sched_group_energy for CPU0
+[    0.069832@0] CPU0: update cpu_capacity 1024
+[    0.074130@0] ASID allocator initialised with 65536 entries
+[    0.112281@0] Meson chip version = RevB (25:B - 23:0)
+[    0.148046@1] Detected VIPT I-cache on CPU1
+[    0.148099@1] Invalid sched_group_energy for CPU1
+[    0.148102@1] CPU1: update cpu_capacity 1024
+[    0.148105@1] CPU1: Booted secondary processor [410fd034]
+[    0.176076@2] Detected VIPT I-cache on CPU2
+[    0.176112@2] Invalid sched_group_energy for CPU2
+[    0.176115@2] CPU2: update cpu_capacity 1024
+[    0.176118@2] CPU2: Booted secondary processor [410fd034]
+[    0.204130@3] Detected VIPT I-cache on CPU3
+[    0.204162@3] Invalid sched_group_energy for CPU3
+[    0.204165@3] CPU3: update cpu_capacity 1024
+[    0.204167@3] CPU3: Booted secondary processor [410fd034]
+[    0.204237@0] Brought up 4 CPUs
+[    0.257627@0] SMP: Total of 4 processors activated.
+[    0.262534@0] CPU features: detected feature: 32-bit EL0 Support
+[    0.268610@0] CPU: All CPU(s) started at EL2
+[    0.272876@0] alternatives: patching kernel code
+[    0.277615@0] Invalid sched_group_energy for CPU3
+[    0.282224@0] Invalid sched_group_energy for Cluster3
+[    0.287295@0] Invalid sched_group_energy for CPU2
+[    0.292020@0] Invalid sched_group_energy for Cluster2
+[    0.297095@0] Invalid sched_group_energy for CPU1
+[    0.301820@0] Invalid sched_group_energy for Cluster1
+[    0.306894@0] Invalid sched_group_energy for CPU0
+[    0.311620@0] Invalid sched_group_energy for Cluster0
+[    0.317342@0] devtmpfs: initialized
+[    0.328243@0] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.332591@0] futex hash table entries: 1024 (order: 5, 131072 bytes)
+[    0.339638@0] pinctrl core: initialized pinctrl subsystem
+[    0.345613@0] NET: Registered protocol family 16
+[    0.365175@0] cpuidle: using governor menu
+[    0.365518@0] vdso: 2 pages (1 code @ ffffff8009777000, 1 data @ ffffff8009bd4000)
+[    0.371274@0] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.379264@0] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.385058@0] pstore: using zlib compression
+[    0.389314@0] console [pstore-1] enabled
+[    0.393007@0] pstore: Registered ramoops as persistent store backend
+[    0.399173@0] ramoops: attached 0x100000@0x7400000, ecc: 0/0
+domain-0 init dvfs: 4
+[    0.413081@0] aml_iomap: amlogic iomap probe done
+[    0.425346@0] aml_snd_reg_map[0], reg:ff632000, size:20
+[    0.425397@0] aml_snd_reg_map[1], reg:ff642000, size:2000
+[    0.430380@0] aml snd iomap probe done
+[    0.475760@1] vgaarb: loaded
+[    0.476127@1] usbcore: registered new interface driver usbfs
+[    0.478900@1] usbcore: registered new interface driver hub
+[    0.484306@1] usbcore: registered new device driver usb
+[    0.489794@1] pps_core: LinuxPPS API ver. 1 registered
+[    0.494631@1] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.504021@1] PTP clock support registered
+[    0.508762@1] spicc ffd13000.spicc_a: dma_en=0
+[    0.512599@1] spicc ffd13000.spicc_a: irq = 0x86
+[    0.517181@1] spicc ffd13000.spicc_a: delay_control=21
+[    0.522346@1] spicc ffd13000.spicc_a: enhance=1
+[    0.526933@1] spicc ffd13000.spicc_a: get reset failed
+[    0.532116@1] spicc ffd13000.spicc_a: enhance_dlyctl=0x0
+[    0.537628@1] spicc ffd13000.spicc_a: master is unqueued, this is deprecated
+[    0.544698@1] spicc ffd13000.spicc_a: cs_num=1
+[    0.549254@1] amlogic-pcie f9800000.pcieA: amlogic_pcie_probe!
+[    0.554890@1] amlogic-pcie f9800000.pcieA: GPIO pad: reset low
+[    0.580999@1] OF: PCI: host bridge /pcieA@f9800000 ranges:
+[    0.581039@1] OF: PCI:   MEM 0xf9c00000..0xf9efffff -> 0x00000000
+[    0.588044@1] amlogic-pcie f9800000.pcieA: Set the RC Bus Master, Memory Space and I/O Space enables.
+[    0.596252@1] amlogic-pcie f9800000.pcieA: normal gpio
+[    0.712881@1] amlogic-pcie f9800000.pcieA: link up
+[    0.713085@1] amlogic-pcie f9800000.pcieA: PCI host bridge to bus 0000:00
+[    0.718870@1] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.724553@1] pci_bus 0000:00: root bus resource [mem 0xf9c00000-0xf9efffff] (bus address [0x00000000-0x002fffff])
+[    0.734980@1] amlogic-pcie f9800000.pcieA: the device class is not reported correctly from the register
+[    0.745223@1] pci 0000:01:00.0: can't set Max Payload Size to 256; if necessary, use "pci=pcie_bus_safe" and report a bug
+[    0.755924@1] pci 0000:00:00.0: BAR 8: assigned [mem 0xf9c00000-0xf9cfffff]
+[    0.762453@1] pci 0000:00:00.0: BAR 6: assigned [mem 0xf9d00000-0xf9d0ffff pref]
+[    0.769878@1] pci 0000:01:00.0: BAR 0: assigned [mem 0xf9c00000-0xf9cfffff 64bit]
+[    0.777446@1] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    0.782561@1] pci 0000:00:00.0:   bridge window [mem 0xf9c00000-0xf9cfffff]
+[    0.789723@1] Advanced Linux Sound Architecture Driver Initialized.
+[    0.796412@1] Bluetooth: Core ver 2.22
+[    0.799671@1] NET: Registered protocol family 31
+[    0.804278@1] Bluetooth: HCI device and connection manager initialized
+[    0.810833@1] Bluetooth: HCI socket layer initialized
+[    0.815903@1] Bluetooth: L2CAP socket layer initialized
+[    0.821181@1] Bluetooth: SCO socket layer initialized
+[    0.826238@1] NetLabel: Initializing
+[    0.829799@1] NetLabel:  domain hash size = 128
+[    0.834355@1] NetLabel:  protocols = UNLABELED CIPSOv4
+[    0.839580@1] NetLabel:  unlabeled traffic allowed by default
+[    0.845728@1] clocksource: Switched to clocksource arch_sys_counter
+[    0.851730@1] VFS: Disk quotas dquot_6.6.0
+[    0.855770@1] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.872130@3] jtag: module init
+[    0.872482@3] NET: Registered protocol family 2
+[    0.874787@3] TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.881516@3] TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+[    0.888300@3] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.894851@3] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    0.900890@3] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    0.907636@3] NET: Registered protocol family 1
+[    0.912360@3] RPC: Registered named UNIX socket transport module.
+[    0.918105@3] RPC: Registered udp transport module.
+[    0.922999@3] RPC: Registered tcp transport module.
+[    0.927894@3] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.004177@3] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    1.009274@3] audit: initializing netlink subsys (disabled)
+[    1.012168@3] audit: type=2000 audit(0.924:1): initialized
+[    1.018310@3] workingset: timestamp_bits=62 max_order=18 bucket_order=0
+[    1.032926@3] proc_dmverity_init
+[    1.034289@3] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    1.038767@3] fuse init (API version 7.26)
+[    1.044562@3] NET: Registered protocol family 38
+[    1.045297@3] Key type asymmetric registered
+[    1.049862@3] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 247)
+[    1.057219@3] io scheduler noop registered
+[    1.061311@3] io scheduler deadline registered (default)
+[    1.066841@3] io scheduler cfq registered
+[    1.079215@3] Unable to detect cache hierarchy from DT for CPU 0
+[    1.085764@3] loop: module loaded
+[    1.086064@3] libphy: Fixed MDIO Bus: probed
+[    1.088819@3] meson6-dwmac ff3f0000.ethernet: no reset control found
+[    1.094141@3] stmmac - user ID: 0x11, Synopsys ID: 0x37
+[    1.099364@3]  Ring mode enabled
+[    1.102601@3]  DMA HW capability register supported[    1.107327@3]  Normal descriptors
+[    1.110650@3]  RX Checksum Offload Engine supported
+[    1.115546@3]        COE Type 2
+[    1.118174@3]  TX Checksum insertion supported
+[    1.122633@3]  Wake-Up On Lan supported
+[    1.126551@3]  Enable RX Mitigation via HW Watchdog Timer
+[    1.134895@3] libphy: stmmac: probed
+[    1.135495@3] eth%d: PHY ID 2000a240 at 1 IRQ POLL (stmmac-0:01) active
+[    1.143188@3] usbcore: registered new interface driver r8152
+[    1.147942@3] usbcore: registered new interface driver asix
+[    1.153512@3] usbcore: registered new interface driver ax88179_178a
+[    1.159797@3] usbcore: registered new interface driver cdc_ether
+[    1.165839@3] usbcore: registered new interface driver net1080
+[    1.171696@3] usbcore: registered new interface driver cdc_subset
+[    1.177817@3] usbcore: registered new interface driver zaurus
+[    1.183622@3] usbcore: registered new interface driver cdc_ncm
+[    1.190038@3] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.196154@3] ehci-pci: EHCI PCI platform driver
+[    1.200861@3] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.207200@3] ohci-pci: OHCI PCI platform driver
+[    1.212270@3] usbcore: registered new interface driver cdc_acm
+[    1.217682@3] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    1.226011@3] usbcore: registered new interface driver usbserial
+[    1.232018@3] usbcore: registered new interface driver usbtest
+[    1.237857@3] usbcore: registered new interface driver usb_ehset_test
+[    1.244388@3] i2c /dev entries driver
+[    1.248423@3] device-mapper: ioctl: 4.35.0-ioctl (2016-06-23) initialised: dm-devel@redhat.com
+[    1.256753@3] Bluetooth: HCI UART driver ver 2.3
+[    1.261246@3] Bluetooth: HCI UART protocol H4 registered
+[    1.266573@3] Bluetooth: HCI UART protocol BCSP registered
+[    1.273056@3] cpu cpu0: bL_cpufreq_init: CPU 0 initialized
+[    1.277694@3] arm_big_little: bL_cpufreq_register: Registered platform driver: scpi
+[    1.286900@3] usbcore: registered new interface driver usbhid
+[    1.291097@3] usbhid: USB HID core driver
+[    1.295890@0] ff803000.serial: clock gate not found
+[    1.300079@0] meson_uart ff803000.serial: ==uart0 reg addr = ffffff800830d000
+[    1.307275@0] ff803000.serial: ttyS0 at MMIO 0xff803000 (irq = 129, base_baud = 1500000) is a meson_uart
+[    1.322302@0] meson_uart ff803000.serial: ttyS0 use xtal(8M) 24000000 change 0 to 115200
+[    1.324896@0] console [ttyS0] enabled
+[    1.324896@0] console [ttyS0] enabled
+[    1.332176@0] bootconsole [aml_uart0] disabled
+[    1.332176@0] bootconsole [aml_uart0] disabled
+[    1.341290@0] ff804000.serial: clock gate not found
+[    1.345791@0] meson_uart ff804000.serial: ==uart1 reg addr = ffffff8008321000
+[    1.352854@0] ff804000.serial: ttyS1 at MMIO 0xff804000 (irq = 130, base_baud = 1500000) is a meson_uart
+[    1.362841@0] secmon secmon: assigned reserved memory node linux,secmon
+[    1.369195@0] secmon: share in base: 0xffffffc0050fe000, share out base: 0xffffffc0050ff000
+[    1.377046@0] secmon: phy_in_base: 0x50fe000, phy_out_base: 0x50ff000
+[    1.388101@2] clkmsr: msr_clk_reg0=ffffff800834a004,msr_clk_reg2=ffffff800834c00c
+[    1.390982@2] clkmsr: clkmsr: driver init
+[    1.395348@2] aml_aes_dma ff63e000.aml_aes: Aml AES_dma
+[    1.400597@2] aml_tdes_dma ff63e000.aml_tdes: Aml TDES_dma
+[    1.406164@2] aml_sha_dma ff63e000.aml_sha: Aml SHA1/SHA224/SHA256 dma
+[    1.412532@2] efuse efuse: probe OK!
+[    1.416535@2] meson-mmc: mmc driver version: 3.02, 2017-05-15: New Emmc Host Controller
+[    1.461755@2] meson-mmc: meson_mmc_probe() : success!
+[    1.466312@1] aml_vrtc rtc: rtc core: registered aml_vrtc as rtc0
+[    1.467715@1] aml_unifykeys_init done!
+[    1.471122@1] storage: storage in base: 0xffffffc005000000
+[    1.476407@1] storage: storage out base: 0xffffffc005040000
+[    1.481920@1] storage: storage block base: 0xffffffc005080000
+[    1.487610@1] storage: probe done!
+[    1.491179@1] audio_dsp: [dsp]register dsp to char divece(257)
+[    1.502553@1] asoc debug: aml_audio_controller_probe-115
+[    1.502951@1] aml-audio-clocks ff642000.audio_clocks: aml_audio_clocks_probe register audio gate clks
+[    1.512368@1] meson-pinctrl pinctrl@ff634480: function 'gen_clk' not supported
+[    1.518569@1] meson-pinctrl pinctrl@ff634480: invalid function gen_clk in map table
+[    1.526207@1] id = 0
+[    1.528484@1] meson-pinctrl pinctrl@ff634480: function 'gen_clk' not supported
+[    1.535456@1] meson-pinctrl pinctrl@ff634480: invalid function gen_clk in map table
+[    1.543102@1] aml_tdm_platform_probe, try register soc platform
+[    1.550054@1] aml_pdm_platform_probe pdm filter mode from dts:1
+[    1.551544@2] meson-aml-mmc ffe07000.emmc: divider requested rate 52000000 != actual rate 49999952: ret=0
+[    1.551621@2] meson-aml-mmc ffe07000.emmc: divider requested rate 52000000 != actual rate 49999952: ret=0
+[    1.553165@2] meson-aml-mmc ffe07000.emmc: divider requested rate 52000000 != actual rate 49999952: ret=0
+[    1.553169@2] meson-mmc: emmc: try set sd/emmc to DDR mode
+[    1.553710@2] emmc: new DDR MMC card at address 0001
+[    1.554457@2] emmc: clock 49999952, 8-bit-bus-width
+[    1.554457@2]
+[    1.554458@2] mmcblk0: emmc:0001 M62704 3.56 GiB
+[    1.554666@2] mmcblk0boot0: emmc:0001 M62704 partition 1 2.00 MiB
+[    1.558881@2] mmcblk0boot1: emmc:0001 M62704 partition 2 2.00 MiB
+[    1.563116@2] mmcblk0rpmb: emmc:0001 M62704 partition 3 512 KiB
+[    1.567160@2]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+[    1.627847@1] aml_pdm_platform_probe, register soc platform
+[    1.634187@1] NET: Registered protocol family 10
+[    1.639143@1] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.644607@1] NET: Registered protocol family 17
+[    1.648680@1] Bluetooth: RFCOMM TTY layer initialized
+[    1.653542@1] Bluetooth: RFCOMM socket layer initialized
+[    1.658831@1] Bluetooth: RFCOMM ver 1.11
+[    1.662678@1] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    1.668097@1] Bluetooth: BNEP filters: protocol multicast
+[    1.673450@1] Bluetooth: BNEP socket layer initialized
+[    1.678532@1] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    1.684579@1] Bluetooth: HIDP socket layer initialized
+[    1.689681@1] Key type dns_resolver registered
+[    1.695002@1] registered taskstats version 1
+[    1.699407@1] Key type encrypted registered
+[    1.710804@1] aml_pdm_probe
+[    1.710852@1] aml_pdm_dai_probe
+[    1.711092@1] asoc aml_dai_set_tdm_fmt, 0x4211, ffffffc03c950418, id(0), clksel(0)
+[    1.718657@1] pad clk ctl value:3
+[    1.721882@1] sclk_ph0 (pad) clk ctl set:1
+[    1.725930@1] master_mode(1), binv(0), finv(1) out_skew(1), in_skew(3)
+[    1.732717@1] asoc-aml-card meson_sound: sonos-soundcard <-> TDM-A mapping ok
+[    1.739625@1] aml_pdm_pcm_new dai->name: ff642000.audiobus:pdm dai->id: 0
+[    1.746288@1] asoc-aml-card meson_sound: sonos-soundcard <-> ff642000.audiobus:pdm mapping ok
+[    1.755864@1] snd_card_add_kcontrols card:ffffffc03c8e2818
+[    1.761265@3] aml_vrtc rtc: setting system clock to 2015-01-01 00:36:21 UTC (1)
+[    1.768329@3] cpucore_cooling_register, max_cpu_core_num:4
+[    1.780614@3] gxbb_pm: enter meson_pm_probe!
+[    1.780711@3] gxbb_pm: meson_pm_probe done
+[    1.783v[    1.789850@3] meson_uart ff803000.serial: ttyS0 use xtal(8M) 24000000 change 115200 to 115200
+[    1.793821@3] Freeing unused kernel memory: 2240K
+[    1.797474@3] checking cpuid whitelist (my cpuid is 25:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE:CO:FF:EE)...
+[    1.806693@3] whitelist check completed
+initramfs: opening rootfs LUKS volume on /dev/mmcblk0p8
+initramfs: setting up rootfs dm-verity on /dev/mapper/luks_root
+initramfs: switching to rootfs
+[    1.969357@1] allow_mount_exec set to 0
+[    2.092777@3] meson_uart ff803000.serial: ttyS0 use xtal(8M) 24000000 change 115200 to 115200
+init started: BusyBox v1.24.2 (2018-11-12 18:20:59 EST)
+starting pid 1067, tty '': '/etc/Configure'
+[    2.160271@3] allow_mount_dev set to 0
+[    2.185618@2] random: crng init done
+[    2.275885@1] /jffs LUKS volume detected on /dev/nandjffs
+[    2.299016@1] opening /jffs LUKS volume on /dev/nandjffs
+[    2.413412@2] checking /jffs file system on /dev/mapper/luks_jffs
+[    2.442097@3] e2fsck 1.44.1 (24-Mar-2018)
+[    2.450884@3] /dev/mapper/luks_jffs: recovering journal
+[    2.556973@3] Pass 1: Checking
+[    2.557015@3] inodes,
+[    2.557047@3] block
+[    2.558815@3] s, and sizes
+[    2.607183@2] EXT4-fs (dm-2): mounted filesystem with ordered data mode. Opts: (null)
+[    2.612858@1] Configure: 12 output lines suppressed due to ratelimiting
+Initializing random number generator...
+Loading default i2c-eeprom.ko
+[    2.626627@0] i2c_eeprom: loading out-of-tree module taints kernel.
+[    2.628816@0] chip size: 0x10000, page size: 0x20, addr len: 2.
+[    2.634068@0] i2c eeprom probe m24c64, addr 0x55.
+[    2.793442@3] register mt_drv
+[    2.793625@3] mt_drv 0000:01:00.0: enabling device (0000 -> 0002)
+[    2.797005@3] MSI resource request success!!
+[    2.802582@3]
+[    2.802582@3]
+[    2.802582@3] === pAd = ffffff800a175000, size = 3261472 ===
+[    2.802582@3]
+[    2.812420@3] <-- RTMPAllocAdapterBlock, Status=0
+[    2.816289@3] pAd->PciHif.CSRBaseAddress =0xffffff8008f00000, csr_addr=0xffffff8008f00000!
+[    2.824458@3] RTMPInitPCIeDevice():device_id=0x7615
+[    3.129595@3] mt_pci_chip_cfg(): HWVer=0x8a10, FWVer=0x8a10, pAd->ChipID=0x7615
+[    3.131260@3] mt_pci_chip_cfg(): HIF_SYS_REV=0x76150001
+[    3.136434@3] RTMPInitPCIeDevice():is_msi = 1
+[    3.140752@3] RtmpChipOpsHook(493): Not support for HIF_MT yet! MACVersion=0x0
+[    3.147906@3] mt7615_init()-->
+[    3.150925@3] Use the default ePAeLNA bin image!
+[    3.155494@3] Use the default /etc_ro/wlan/MT7615E_EEPROM1.bin bin image!
+[    3.162225@3] <--mt7615_init()
+[    3.165233@3] ChipOpsMCUHook
+[    3.175524@3] <-- RTMPAllocTxRxRingMemory, Status=0
+[    3.175559@3] SONOS: ignoring RT2860APCard.dat in favor of hard-coded configuration and calibration file locations
+[    3.185100@3] SONOS: MTK dev ra0 created on PCI bus #1
+[    3.190789@3] pci probe count=1
+[    3.193235@3] rtmp_fwdl_prepare(): FW DL in probe stage
+[    3.200471@3] Hif Init Done!
+[    3.325171@0] MCU Init Done!
+[    3.325215@0] RtmpChipOpsEepromHook::forceMode: 4 , infType: 5
+[    3.328416@0] i2c_eeprom_bin_read: cout: 632, offset: 0[    3.333635@0] i2c bus read failed.
+[    3.336604@0] rtmp_load_wifical: Get WiFi-CAL header failed!
+[    3.342388@0] Can't find bin file, Load EEPROM Buffer from efuse.
+[    3.360155@0] Can't find bin file, Create one from efuse.
+[    3.360181@0] rtmp_ee_write_to_bin::FileName=/tmp/wifi-binfile.ra0
+[    3.366221@0] ra0 - overwriting DPD bits
+[    3.370030@0]  MtCmdSetRlmPorCal: (ret = 0)
+Using MDP serial number ACOFFEECOFFEE
+Current wifi address: 00:00:00:00:00:00
+br0=78:28:AA:CO:FF:EE
+eth0=78:28:AA:CO:FF:EE
+[    3.428157@0] meson_pinctrl: gpio virq[122] connect to GIC hwirq[96]
+[    3.429041@0] ti83822_config_init: intentionally disabling EEE [0x018b -> 0x180] ***
+[    3.436967@0] ti83822_config_init: digital restart - writing 0x4000 to register 0x1f
+[    3.444443@0] meson_pinctrl: gpio virq[122] connect to GIC hwirq[97]
+[    3.451071@0] ti83822_announce_linkup: announcing link status change
+[    3.457212@2] ti83822_announce_linkup: announcing link status change
+[    3.457529@0] ti83822_announce_linkup: announcing link status change
+[    3.480976@2] meson6-dwmac ff3f0000.ethernet eth0: fail to init PTP.
+[    3.482125@2] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+Loading default blackbox.ko
+[    3.499640@3] Sonos Blackbox kernel trace module, buffer size 131072
+Loading default utils.ko
+Loading default sonos_device.ko
+Loading default event_queue.ko
+[    3.510854@3] event_queue: module license 'Proprietary' taints kernel.
+[    3.514776@3] Disabling lock debugging due to kernel taint
+Loading default
+[    3.524098@3] Registered chk driver
+ chk.ko
+Loading default apple_auth.ko
+Loading default lla.ko
+Loading default micctl.ko
+Loading default sensors.ko
+[    3.650487@1] meson_pinctrl: gpio virq[87] connect to GIC hwirq[98]
+Loading default lp5562_led.ko
+[    3.673783@1] meson_pinctrl: gpio virq[87] connect to GIC hwirq[98]
+[    3.697758@1] meson_pinctrl: gpio virq[87] connect to GIC hwirq[98]
+Loading default ampctl.ko
+[    3.708915@3] meson_pinctrl: gpio virq[89] connect to GIC hwirq[99]
+Loading default caamkeys.ko
+[    3.714270@0] caamkeys_init: module inserted for major 124
+Loading default psoc_33.ko
+Loading default sdd.ko
+[    5.037222@0] ti83822: port up, speed 100, full duplex
+[    5.037272@0] ti83822_announce_linkup: announcing link status change
+[    5.043216@0] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[    5.049638@0] meson6-dwmac ff3f0000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+[    6.015985@1] meson_pinctrl: gpio virq[20] connect to GIC hwirq[232]
+mv: can't rename '/jffs/upgrade_mgr.txt': No such file or directory
+mv: can't rename '/jffs/upgrade_mgr_report.json': No such file or directory
+mv: can't rename '/jffs/upgrade_mgr.log': No such file or directory
+[    6.107676@1] ath: SKB CB Linux 48 ATH 48 TX 48 RX 20
+[    6.107717@1] ath: testpoints available
+[    6.110938@1] ath_attach: ffffff8001cf7698 40 rxbufs, 200 txbufs
+[    6.116855@1] wifi: interface 0: mdp region 0x2 maps to MTK region code, 2G: 1, 5G: 9
+[    6.125675@1] ra0: SONOS: Locked unit, checking config in /wifi
+[    6.133779@3] [SKUenable] BAND0: 1
+[    6.133928@3] CalCacheApply = 1
+[    6.138443@3] ra0: SONOS: Read in config file: /wifi/config.ra0
+[    6.143125@3] FW DL in probe, bypass Hif and MCU Init!
+[    6.148084@3] RTMP_COM_IoctlHandle: Wait FW complete the calibration cmd
+[    9.505209@3] i2c_eeprom_bin_read: cout: 632, offset: 0
+[    9.505747@3] i2c bus read failed.
+[    9.507993@3] rtmp_load_wifical: Get WiFi-CAL header failed!
+[    9.513814@3] Can't find bin file, Load EEPROM Buffer from efuse.
+[    9.531593@3] Can't find bin file, Create one from efuse.
+[    9.531620@3] rtmp_ee_write_to_bin::FileName=/tmp/wifi-binfile.ra0
+[    9.537541@3] ra0 - overwriting DPD bits
+[    9.543407@3] MtCmdTxPowerSKUCtrl: fgTxPowerSKUEn: 1, BandIdx: 0
+[   10.816493@0] ath: EDMA fastabort disabled
+[   10.817238@0] ath0: mt7615 shim attached to ra0
+Using MDP serial number ACOFFEECOFFEE
+Current wifi address: 00:00:00:00:00:00
+[   10.830239@1] ath0: set MAC address to 78:28:BB:CO:FF:EE
+br0=78:28:AA:CO:FF:EE
+eth0=78:28:AA:CO:FF:EE
+SIOCGIFHWADDR: Device or resource busy
+ath0=78:28:BB:CO:FF:EE
+Starting Bluetooth Services
+[   10.908219@0] meson_uart ff804000.serial: ttyS1 use xtal(8M) 24000000 change 0 to 9600
+[   10.910652@0] meson_uart ff804000.serial: ttyS1 use xtal(8M) 24000000 change 9600 to 115200
+[   10.932321@1] allow_insmod set to 0
+Saving random seed...
+Configure script complete.
+[   11.042951@0] sat: enable=0
+[   11.074007@3] ath0: set MAC address to 78:28:BB:CO:FF:EE
+[   11.082399@0] br0: port 1(eth0) entering blocking state
+[   11.082441@0] br0: port 1(eth0) entering disabled state
+[   11.087505@0] device eth0 entered promiscuous mode
+[   11.118101@0] ath0: set SonosNet SSID to ""
+[   11.118146@0] block ns probes 1
+[   11.121787@2] ath_ioctl_set_channel: frequency 2412 (1)
+[   11.134888@0] br0: port 1(eth0) entering blocking state
+[   11.134928@0] br0: port 1(eth0) entering listening state
+[   11.142425@3] ath0: ath_init
+[   11.142770@0] SONOS station module v1.0
+[   11.146499@0] ath0: bridge addr=78:28:AA:CO:FF:EE
+
+Please press Enter to activate this console.
+starting pid 1339, tty '/dev/ttyS0': '/usr/sbin/secure_console.sh'
+Console usage not enabled
+process '/usr/sbin/secure_console.sh' (pid 1339) exited. Scheduling for restart.
+
+Please press Enter to activate this console.
