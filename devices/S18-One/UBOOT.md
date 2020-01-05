@@ -17,9 +17,124 @@ at the following URL:
 ### Options / Commands
 
 A brief summary of the commands available at the U-Boot prompt can be found
-in the following text dump:
+in the following sections:
 
-* [J3-Console-Uboot-Help.txt](./dumps/j3-console-uboot-help.txt)
+#### Locked
+
+When a unit is 'locked' U-Boot is restricted to the following:
+
+```
+Sonos Tupelo > help
+boot    - boot default, i.e., run 'bootcmd'
+ddp     - ddputil - Diagnostic Data Page utility
+ddr     - DDR memory Bank-Row-Col Access Test
+diag    - perform board diagnostics
+help    - print command description/usage
+i2c     - I2C sub-system
+memtest - memtest Memory sub-system
+ping    - send ICMP ECHO_REQUEST to network host
+printenv- print environment variables
+reset   - Perform RESET of the CPU
+run     - run commands in an environment variable
+saveenv - save environment variables to persistent storage
+setenv  - set environment variables
+sleep   - delay execution for some time
+sonosboot- Boot the freshest section (or optionally the least fresh)
+unlock  - device unlock
+update  - Upgrade U-boot image on flash
+usb     - USB sub-system
+version - print monitor, compiler and linker version
+```
+
+#### Unlocked
+
+When a unit is 'unlocked' U-Boot provides the following:
+
+```
+Sonos Tupelo > help
+?       - alias for 'help'
+aml_gpio-  Amlogic A113 GPIO dump
+audio   - audio sub-system
+base    - print or set address offset
+bdinfo  - print Board Info structure
+boot    - boot default, i.e., run 'bootcmd'
+bootd   - boot default, i.e., run 'bootcmd'
+bootgen - displays the bootgen stored in a Sonos section
+booti   - boot arm64 Linux Image image from memory
+bootp   - boot image via network using BOOTP/TFTP protocol
+bootz   - boot Linux zImage image from memory
+burnfuse- check and burn all security-related OTP fuses
+ccg3    - CCG3 sub-system
+cmp     - memory compare
+coninfo - print console devices and information
+cp      - memory copy
+crc32   - checksum calculation
+dcache  - enable or disable data cache
+ddp     - ddputil - Diagnostic Data Page utility
+ddr     - DDR memory Bank-Row-Col Access Test
+dhcp    - boot image via network using DHCP/TFTP protocol
+diag    - perform board diagnostics
+dm      - Driver model low level access
+echo    - echo args to console
+editenv - edit environment variable
+env     - environment handling commands
+erase   - erase FLASH memory
+exit    - exit script
+false   - do nothing, unsuccessfully
+fdt     - flattened device tree utility commands
+flinfo  - print FLASH memory information
+go      - start application at address 'addr'
+gpio    - query and control gpio pins
+gpt     - GUID Partition Table
+help    - print command description/usage
+i2c     - I2C sub-system
+icache  - enable or disable instruction cache
+iminfo  - print header information for application image
+imxtract- extract a part of a multi-image
+itest   - return true/false on integer compare
+led_test- Test app for testing U-boot LED patterns
+loadb   - load binary file over serial line (kermit mode)
+loads   - load S-Record file over serial line
+loadx   - load binary file over serial line (xmodem mode)
+loady   - load binary file over serial line (ymodem mode)
+loop    - infinite loop on address range
+md      - memory display
+mdio    - MDIO utility commands
+mdp     - Display MDP or initialize the MDP and turn autodiag on
+          really (UNSAFE) command on a secure unit
+memtest - memtest Memory sub-system
+mii     - MII utility commands
+mm      - memory modify (auto-incrementing address)
+mmc     - MMC sub system
+mmcinfo - display MMC info
+mw      - memory write (fill)
+nm      - memory modify (constant address)
+pci     - list and access PCI Configuration Space
+ping    - send ICMP ECHO_REQUEST to network host
+printenv- print environment variables
+protect - enable or disable FLASH write protection
+rarpboot- boot image via network using RARP/TFTP protocol
+reset   - Perform RESET of the CPU
+run     - run commands in an environment variable
+saveenv - save environment variables to persistent storage
+setenv  - set environment variables
+setexpr - set environment variable as the result of eval expression
+showvar - print local hushshell variables
+sleep   - delay execution for some time
+smi     - smi - isues read/write command on smi for switch registers
+socfuse - read and write SoC-specific OTP fuses
+sonosboot- Boot the freshest section (or optionally the least fresh)
+source  - run script from memory
+temp    - DIAG: display CPU/PA board temperature
+test    - minimal test like /bin/sh
+tftpboot- boot image via network using TFTP protocol
+true    - do nothing, successfully
+unlock  - device unlock
+update  - Upgrade U-boot image on flash
+upgrade - Upgrade a section/kernel/rootfs
+usb     - USB sub-system
+version - print monitor, compiler and linker version
+```
 
 ### Memory Read-Out
 
