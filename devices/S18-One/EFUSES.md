@@ -1,5 +1,34 @@
 ## eFuses
 
+1. [Retail State](#retail-state)
+1. [Fuses](#fuses)
+
+### Fuses
+
+The following has been extracted from the efuse driver from the Sonos GPL
+sources:
+
+|Index|Name|Expected Length (Bytes)|
+|-|-|-|
+|0|`ENABLE_SECURE_BOOT`|1|
+|1|`ENABLE_ENCRYPTION`|1|
+|2|`REVOKE_KPUB_0`|1|
+|3|`REVOKE_KPUB_1`|1|
+|4|`REVOKE_KPUB_2`|1|
+|5|`REVOKE_KPUB_3`|1|
+|6|`ENABLE_ANTIROLLBACK`|1|
+|7|`ENABLE_JTAG_PASSWORD`|1|
+|8|`ENABLE_SCAN_PASSWORD`|1|
+|9|`DISABLE_JTAG`|1|
+|10|`DISABLE_SCAN`|1|
+|11|`ENABLE_USB_BOOT_PASSWORD`|1|
+|12|`DISABLE_USB_BOOT`|1|
+|257|`SBOOT_KPUB_SHA`|32|
+|259|`JTAG_PASSWD_SHA_SALT`|32|
+|260|`SCAN_PASSWD_SHA_SALT`|32|
+|263|`SBOOT_AES256_SHA2`|32|
+|512|`GP_REE`|16|
+
 ### Retail State
 
 The fuses appear to be in the following state on a retail unit:
@@ -30,30 +59,3 @@ dbb823015c2972f7e632bdd03fbc13e4c330a2e53fe40030c7803f0ba72eb0c7
 fuse_read(GP_REE): ffffffffffffffff0000000000000000
 fuse_read(CPUID): REMOVED_FROM_OUTPUT_BY_AUTHOR__
 ```
-
-### Fuses
-
-The following has been extracted from the efuse driver from the Sonos GPL
-sources:
-
-|Index|Name|Expected Length (Bytes)|
-|-|-|-|
-|0|`ENABLE_SECURE_BOOT`|1|
-|1|`ENABLE_ENCRYPTION`|1|
-|2|`REVOKE_KPUB_0`|1|
-|3|`REVOKE_KPUB_1`|1|
-|4|`REVOKE_KPUB_2`|1|
-|5|`REVOKE_KPUB_3`|1|
-|6|`ENABLE_ANTIROLLBACK`|1|
-|7|`ENABLE_JTAG_PASSWORD`|1|
-|8|`ENABLE_SCAN_PASSWORD`|1|
-|9|`DISABLE_JTAG`|1|
-|10|`DISABLE_SCAN`|1|
-|11|`ENABLE_USB_BOOT_PASSWORD`|1|
-|12|`DISABLE_USB_BOOT`|1|
-|257|`SBOOT_KPUB_SHA`|32|
-|259|`JTAG_PASSWD_SHA_SALT`|32|
-|260|`SCAN_PASSWD_SHA_SALT`|32|
-|263|`SBOOT_AES256_SHA2`|32|
-|512|`GP_REE`|16|
-

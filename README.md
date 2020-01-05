@@ -13,10 +13,14 @@ can be repurposed - ideally via software modification.
 Support / validation against the following devices is currently being worked
 on:
 
-* [Sonos One (Generation 2) [S18]](devices/S18-One/README.md)
+1. [Sonos One (Generation 2) [S18]](devices/S18-One/README.md)
 
 ## Collaboration
 
-Please open an issue, or a pull request with the following information:
+Please feel free to open issues and pull requests with information collected
+during analysis of Sonos devices. Information will be merged into the
+respective trees with all credit provided for contributions.
 
-...
+In order to add a new device, please open a pull request with a tree set-out
+in the same manner as `devices/S18-One/`.
+

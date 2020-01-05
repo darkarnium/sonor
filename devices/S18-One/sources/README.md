@@ -1,5 +1,8 @@
 ## Sources
 
+1. [Usage](#usage)
+1. [U-Boot](#u-boot)
+
 Unfortunately, it appears that the build root referenced in the public Amlogic
 documentation is no longer accessible via the published URL. In addition to
 this, access to an alternate Git source requires an account:

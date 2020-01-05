@@ -1,5 +1,14 @@
 ## U-Boot
 
+1. [Options / Commands](#options--commands)
+  * [Locked](#locked)
+  * [Unlocked](#unlocked)
+1. [Memory Read-Out](#memory-read-out)
+1. [Write-What-Where](#write-what-where)
+  * [Via `write-what-where.py`](#via-write-what-wherepy)
+  * [Manually](#manually)
+1. [Enable Privileged Commands](#enable-privileged-commands)
+
 Based on the Sonos employee email in the U-Boot version string it is likely
 that this version of U-Boot is customised for Sonos. It likely also contains
 Amlogic provided U-Boot patches for the A113 SoC.

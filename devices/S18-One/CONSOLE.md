@@ -1,5 +1,8 @@
 ## Console
 
+1. [Pinout](#pinout)
+1. [Boot Console](#boot-console)
+
 An unpopulated connector which provides a serial console can be found at the
 base of the logic board PCB labelled as `J3` on the Sonos One (Generation 2)
 [S18].
