@@ -1,7 +1,10 @@
 ## Bill Of Materials (BOM)
 
+1. [Overview](#overview)
 1. [Flattened DeviceTree (FDT)](#flattened-devicetree-fdt)
 1. [Data Sheets](#data-sheets)
+
+### Overview
 
 The following list details the major components on the logic board of a Sonos
 One (Generation 2) [S18].

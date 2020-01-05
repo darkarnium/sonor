@@ -1,6 +1,9 @@
 ## EEPROM
 
+1. [Overview](#overview)
 1. [Reading](#reading)
+
+### Overview
 
 An ST M24C64 EEPROM (i2c) appears to be present on the 'radio board' of a
 Sonos One (Generation 2) [S18]. The purpose of this EEPROM is not currently

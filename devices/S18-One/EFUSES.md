@@ -1,7 +1,12 @@
 ## eFuses
 
+1. [Overview](#overview)
 1. [Retail State](#retail-state)
 1. [Fuses](#fuses)
+
+### Overview
+
+TBD.
 
 ### Fuses
 

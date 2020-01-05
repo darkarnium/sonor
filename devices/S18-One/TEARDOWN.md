@@ -1,8 +1,11 @@
 ## Teardown
 
+1. [Overview](#overview)
 1. [Tools](#tools)
 1. [Process](#process)
 1. [References](#references)
+
+### Overview
 
 The following guide details the tear down of a Sonos One (Generation 2) [S18]
 in order to access the logic board.
