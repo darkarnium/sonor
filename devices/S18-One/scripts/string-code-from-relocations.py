@@ -5,6 +5,8 @@ certainly not different platforms.
 
 This is included for an example of what was done, rather than for any other
 reason.
+
+Author: Peter Adkins (@Darkarnium)
 '''
 
 import re

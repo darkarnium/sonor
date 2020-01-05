@@ -24,6 +24,7 @@ The following pages contain more information about the respective components
 1. [Bill Of Materials](./BOM.md)
 1. [Serial Console](./CONSOLE.md)
 1. [U-Boot](./UBOOT.md)
+1. [MDP](./MDP.md)
 1. [efuses](./EFUSES.md)
 1. [EEPROM](./EEPROM.md)
 1. [JTAG / SWD](./JTAGSWD.md)
