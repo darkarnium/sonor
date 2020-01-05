@@ -1,8 +1,9 @@
 ## MDP (Manufacturer Device Page)
 
 1. [Overview](#overview)
-1. [U-Boot](#u-boot)
 1. [Structure](#structure)
+1. [U-Boot](#u-boot)
+    1. [Modify `mdp_authorized_flags`](#modify-mdp_authorized_flags)
 1. [References](#references)
 
 ### Overview
@@ -10,14 +11,6 @@
 The Sonos One (Generation 2) [S18] appears to have a section of flash for
 storage of unit specific configuration, known as the 'Manufacturer Device
 Page' or MDP.
-
-### U-Boot
-
-Methods exist in U-Boot to read from and write to the MDP. These are as
-follows:
-
-* `0x1004DA0` - `sonos_mdp_read(...)`
-* `0x1004DB4` - `sonos_mdp_write(...)`
 
 ### Structure
 
@@ -128,6 +121,166 @@ struct manufacturing_data_page3 {
 };
 ```
 
+### U-Boot
+
+Methods exist in U-Boot to read from and write to the MDP. These are as
+follows:
+
+* `0x1004DA0` - `sonos_mdp_read(...)`
+* `0x1004DB4` - `sonos_mdp_write(...)`
+
+#### Modify `mdp_authorized_flags`
+
+Patch the address of the `printf` operation in the `do_mdp` command to print
+`mdp3_version` in place of `mdp_sw_features` when the `mdp` command is run
+without arguments. This should be done to ensure offsets are calculated
+correctly as a bad write to the MDP would be extremely problematic, and may
+not be recoverable.
+
+If successful the value of `MDP sw_features` should read `2` rather than `0`.
+This is due to the `mdp3_version` member from the `manufacturing_data_page`
+being read, rather than `mdp_sw_features` - as the patch changes the offset
+from `0x220` to `0x200`.
+
+```shell
+#
+# Original - mdp_sw_features
+# 
+# 0x10051F0 - LDR	W1, [X29, #220] - (A1 DF 40 B9)
+# 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 1
+#                     \_____________________/\________/\________/
+#                              IMM12             Rn        Rt
+#
+$ python3 i2c-thief.py 0x10051F0 0x10051F4
+
+#
+# Patch to mdp3_version
+# 
+# 0x10051F0 - LDR	W1, [X29, #200] - (A1 CB 40 B9)
+# 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 1 0 1 1 1 0 1 0 0 0 0 1
+#                     \_____________________/\________/\________/
+#					           IMM12			Rn         Rt
+#
+$ python3 i2c-thief.py 0x10051F0 0x10051F4
+$ python3 write-what-where.py 0x10051F1 0xCB
+
+#
+# Confirm the `mdp` command now returns `mdp3_version` in place of
+# `sw_features`
+#
+$ stty -F /dev/ttyUSB0 min 100 time 2
+$ echo 'mdp' > /dev/ttyUSB0 && cat /dev/ttyUSB0
+MDP is initialized, diags are disabled
+MDP model is 26
+MDP MDP_FLAG_HAS_VERSION yes
+MDP mdp_version 4
+MDP mdp2_version 5
+MDP mdp3_version 2
+MDP mdp_pages_present 7
+MDP auth_flags 0
+MDP sw_features 2
+Sonos Tupelo > ^C
+```
+
+Next, reboot the unit before attempting to patch. A reboot must be performed
+before patching to ensure everything is clean. Failure to do so may cause
+irreparable damage to the MDP.
+
+After a reboot use the `mdp sw_features` command to set `mdp_sw_features` to
+the same value as will be set later in `mdp_authorized_flags`:
+
+```shell
+#
+#   MDP_AUTH_FLAG_KERNEL_PRINTK_ENABLE = 0x00000001 
+#   MDP_AUTH_FLAG_CONSOLE_ENABLE = 0x00000002
+#   MDP_AUTH_FLAG_TELNET_ENABLE = 0x00000008
+#   MDP_AUTH_FLAG_EXEC_ENABLE = 0x00000010
+#   MDP_AUTH_FLAG_UBOOT_UNLOCK_ENABLE = 0x00000020
+#   
+#   print(
+#       '{0:08x}'.format(
+#           MDP_AUTH_FLAG_KERNEL_PRINTK_ENABLE |
+#           MDP_AUTH_FLAG_CONSOLE_ENABLE |
+#           MDP_AUTH_FLAG_TELNET_ENABLE |
+#           MDP_AUTH_FLAG_EXEC_ENABLE |
+#           MDP_AUTH_FLAG_UBOOT_UNLOCK_ENABLE
+#       )
+#   )
+#
+mdp sw_features 0000003b
+```
+
+Patch the `do_mdp` command so that the `sw_features` subcommand writes the
+specified value to the address of `mdp_authorized_flags`, rather than to
+`mdp_sw_features`. This provides an easy way of writing to
+`mdp_authorized_flags` which is not possible using the `mdp` command without
+modification.
+
+```shell
+#
+# Original - mdp_sw_features
+# 
+# 0x1005024 - STR	W0, [X29, #220] - (A0 DF 00 B9)
+# 1 0 1 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 0
+#                     \_____________________/\________/\________/
+#                              IMM12             Rn        Rt
+$ python3 i2c-thief.py 0x1005024 0x1005028
+
+# 
+# Patch to mdp_authorized_flags
+# 
+# 0x1005024 - STR	W0, [X29, #208] - (A0 D3 00 B9)
+# 1 0 1 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0 0 0
+#                     \_____________________/\________/\________/
+#                              IMM12             Rn        Rt
+#
+$ python3 i2c-thief.py 0x1005024 0x1005028
+$ python3 write-what-where.py 0x1005025 0xD3
+```
+
+Use the now modified `mdp sw_features` command to write the following flags
+to `mdp_authorized_flags`. This should be done via a terminal emulator if
+performed interactively, as a 'Really modify MDP info <y/N>' prompt must be
+answered before writes will occur:
+
+```shell
+#
+#   MDP_AUTH_FLAG_KERNEL_PRINTK_ENABLE = 0x00000001 
+#   MDP_AUTH_FLAG_CONSOLE_ENABLE = 0x00000002
+#   MDP_AUTH_FLAG_TELNET_ENABLE = 0x00000008
+#   MDP_AUTH_FLAG_EXEC_ENABLE = 0x00000010
+#   MDP_AUTH_FLAG_UBOOT_UNLOCK_ENABLE = 0x00000020
+#   
+#   print(
+#       '{0:08x}'.format(
+#           MDP_AUTH_FLAG_KERNEL_PRINTK_ENABLE |
+#           MDP_AUTH_FLAG_CONSOLE_ENABLE |
+#           MDP_AUTH_FLAG_TELNET_ENABLE |
+#           MDP_AUTH_FLAG_EXEC_ENABLE |
+#           MDP_AUTH_FLAG_UBOOT_UNLOCK_ENABLE
+#       )
+#   )
+#
+mdp sw_features 0000003b
+```
+
+Use the `mdp` command to confirm that the new `mdp_authorized_flags` value
+has been written, and reboot.
+
+```shell
+$ stty -F /dev/ttyUSB0 min 100 time 2
+$ echo 'mdp' > /dev/ttyUSB0 && cat /dev/ttyUSB0
+MDP is initialized, diags are disabled
+MDP model is 26
+MDP MDP_FLAG_HAS_VERSION yes
+MDP mdp_version 4
+MDP mdp2_version 5
+MDP mdp3_version 2
+MDP mdp_pages_present 7
+MDP auth_flags 3b
+MDP sw_features 0
+Sonos Tupelo > ^C
+```
 
 ### References
 
