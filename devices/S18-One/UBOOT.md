@@ -112,3 +112,42 @@ sonosboot
 implemented by Sonos in `secure_console.sh`.
 
 8. Be sad :(
+
+### Enable Privileged Commands
+
+The version of U-Boot which ships with the Sonos One (Generation 2) [S18]
+appears to contain a number of 'privileged' commands which are only enabled
+on a unit marked as being 'unlocked'.
+
+It's possible to patch the check used by U-Boot to determine whether the
+device is 'unlocked' by patching a `CBNZ` and `MOV` operation to force the
+procedure to return `0x1` rather than `0x0`. The procedure itself is at
+`0x100CCEC` and has been labelled as the author as `is_device_locked` based
+on its operation.
+
+1. Try MDP (privileged) command, to confirm it is not accessible.
+```shell
+stty -F /dev/ttyUSB0 min 100 time 2
+echo 'mdp' > /dev/ttyUSB0 && cat /dev/ttyUSB0
+
+```
+2. Patch `CBNZ` to `CBZ` in `is_device_locked`.
+
+```shell
+python3 i2c-thief.py 0x100CD14 0x100CD18
+python3 write-what-where.py 0x100CD17 0x34
+```
+
+3. Patch `MOV W0, #0` to `MOV W0, #1` in `is_device_locked`.
+```shell
+python3 i2c-thief.py 0x100CDAC 0x100CDB0
+python3 write-what-where.py 0x100CDAC 0x20
+```
+
+4. Try MDP command again.
+```shell
+stty -F /dev/ttyUSB0 min 100 time 2
+echo 'mdp' > /dev/ttyUSB0 && cat /dev/ttyUSB0
+```
+
+5. Be happy :)
