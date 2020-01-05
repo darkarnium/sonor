@@ -2,7 +2,7 @@
 
 ### Retail State
 
-The fuses appear to be in the following state on a retail device:
+The fuses appear to be in the following state on a retail unit:
 
 ```
 fuse_read(ENABLE_SECURE_BOOT): 01

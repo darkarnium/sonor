@@ -1,8 +1,8 @@
 ## MDP (Manufacturer Device Page)
 
 The Sonos One (Generation 2) [S18] appears to have a section of flash for
-storage of device specific configuration, known as the Manufacturer Device
-Page or MDP.
+storage of unit specific configuration, known as the 'Manufacturer Device
+Page' or MDP.
 
 ### U-Boot
 
