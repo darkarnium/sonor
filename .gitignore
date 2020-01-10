@@ -130,3 +130,5 @@ dmypy.json
 
 # Mac OS files.
 .DS_Store
+
+NOTES.md
