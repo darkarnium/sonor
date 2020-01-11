@@ -5,6 +5,7 @@
 #
 #    2016.11-A113-Strict-Rev0.14
 #
+# Author: Peter Adkins (@Darkarnium)
 #
 
 # Patch 'privileged' commands into U-Boot.

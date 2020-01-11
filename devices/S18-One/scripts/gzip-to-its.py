@@ -1,3 +1,11 @@
+'''
+A quick helper to take an input kernel gzip and output an ITS (Image Tree
+Source) data line for its contents.
+
+Author: Peter Adkins (@Darkarnium)
+
+'''
+
 import sys
 import struct
 import pathlib
