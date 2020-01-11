@@ -28,6 +28,7 @@ The following pages contain more information about the respective components
 1. [eFuses](./EFUSES.md)
 1. [EEPROM](./EEPROM.md)
 1. [JTAG / SWD](./JTAGSWD.md)
+1. [Kernel](./KERNEL.md)
 1. [GPL / Sources](./sources/README.md)
 
 ### References

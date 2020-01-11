@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "*.s": "c"
+        "*.s": "c",
+        "locale": "c"
     }
 }

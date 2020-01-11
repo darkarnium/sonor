@@ -18,6 +18,13 @@ This section appears to be `0x5200` bytes long and is defined as the
 following structures - per the `mdp.h` from the Sonos GPL packages.
 
 ```c
+#define MDP_MAGIC 0xce10e47d
+#define MDP_MAGIC2 0xca989b4a
+#define MDP_MAGIC2_ENC 0xfa87b921
+#define MDP_MAGIC3 0xcba979f0
+```
+
+```c
 struct smdp {
     struct manufacturing_data_page      mdp;
     struct manufacturing_data_page2     mdp2;
@@ -119,6 +126,13 @@ struct manufacturing_data_page3 {
 
     uint8_t mdp3_reserved2[4096 + 128];
 };
+```
+
+### Dump
+
+```
+mmc read 0x300000 0x3200 0x29
+md 0x300000 0x1480
 ```
 
 ### U-Boot
