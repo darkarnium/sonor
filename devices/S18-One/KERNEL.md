@@ -3,6 +3,7 @@
 1. [Overview](#overview)
 1. [Obtaining the 'Sox' Image](#obtaining-the-kernel)
 1. [Carving the Kernel](#carving-the-kernel)
+1. [Dumping `initramfs`](#dumping-initramfs)
 
 ### Overview
 
@@ -89,4 +90,65 @@ $ python3  ../scripts/dump-kernel-from-itb.py kern0.itb kern0.gz
 # Spot check.
 $ file kern0.gz
 kern0.gz: gzip compressed data, was "Image", last modified: Mon Nov 12 23:29:26 2018, from Unix
+```
+
+### Dumping `initramfs`
+
+The following are 'scratch' notes for how to modify the initramfs and repack
+both the Kernel and ITB / FIT for booting.
+
+```bash
+# Gunzip the Kernel.
+$ gunzip kern0.gz
+
+# Dump the initramfs from Kernel
+$ dd if=kern0 of=initramfs.gz bs=1 skip=9800328 count=1900200
+
+# Back it up.
+$ cp kern0 kern0.original
+$ cp initramfs.gz initramfs.original.gz
+
+# Initial size.
+$ ls -la initramfs.gz
+-rw-rw-r-- 1 darkarnium darkarnium 1900200 Jan 11 18:38 initramfs.gz
+
+# Ensure no trailing garbage.
+$ gunzip -v initramfs.gz
+
+# Extract CPIO.
+$ mkdir -p rootfs/
+$ cp initramfs rootfs/
+$ cd rootfs
+$ cat initramfs | sudo cpio -idmv
+$ rm initramfs
+
+# Patch /init
+
+# Create cpio.
+$ find . -print0 | sudo cpio --null --create --verbose --format=newc > initramfs
+
+# Gzip it.
+$ gzip initramfs
+
+# Check size, and add pad file to CPIO until same size.
+$ ls -la initramfs.gz
+-rw-r--r-- 1 darkarnium darkarnium 1899459 Jan 11 18:45 initramfs.gz
+
+# Recheck size, and ensure it matches now.
+$ ls -la initramfs.gz
+-rw-r--r-- 1 darkarnium darkarnium 1900200 Jan 11 18:51 initramfs.gz
+
+# Patch it in using dd.
+$ dd conv=notrunc if=initramfs.gz of=kern0 bs=1 seek=9800328
+
+# Ensure the patched file is the same size.
+$ ls -la kern0 kern0.original
+-rw-rw-r-- 1 darkarnium darkarnium 12361736 Jan 11 18:54 kern0
+-rw-rw-r-- 1 darkarnium darkarnium 12361736 Jan 11 18:52 kern0.original
+
+# Gzip the kernel.
+$ gzip --best kern0
+
+# Convert into ITS compatible format.
+$ python3 ../scripts/gzip-to-its.py kern0.gz data-fragment.its
 ```
