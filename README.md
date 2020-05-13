@@ -14,6 +14,7 @@ Support / validation against the following devices is currently being worked
 on:
 
 1. [Sonos One (Generation 2) [S18]](devices/S18-One/README.md)
+2. [Sonos ZP120](devices/ZP120/README.md)
 
 ## Collaboration
 
