@@ -4,7 +4,8 @@
 
 ### Thanks
 
-...
+A massive thank you to [Andre Protas](https://twitter.com/cveiche) for donating
+a ZP120 for research purposes!
 
 ### Overview
 
