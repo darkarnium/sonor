@@ -1,0 +1,17 @@
+#!/bin/sh
+echo "Saving random seed..."
+random_seed=/jffs/random-seed
+touch $random_seed
+chmod 600 $random_seed
+poolfile=/proc/sys/kernel/random/poolsize
+#  linux 2.4 has the poolsize in bytes, >= 2.6 in bits
+case `uname -r` in
+    2.4.*)
+        [ -r $poolfile ] && bytes=`cat $poolfile` || bytes=512
+        ;;
+    *)
+        [ -r $poolfile ] && bits=`cat $poolfile` || bits=4096
+        bytes=$(expr $bits / 8)
+        ;;
+esac
+dd if=/dev/urandom "of=$random_seed" count=1 "bs=$bytes" 2> /dev/null

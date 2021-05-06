@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:smartspeaker-audio:device:SpeakerGroup:1</deviceType>
+    <friendlyName>#GROUP_NAME#</friendlyName>
+    <manufacturer>SONOS</manufacturer>
+    <UDN>uuid:#UUID#</UDN>
+    <apiVersion>#API_VERSION#</apiVersion>
+    <minApiVersion>#MIN_API_VERSION#</minApiVersion>
+    <serviceList>
+      <service>
+        <serviceType>urn:smartspeaker-audio:service:SpeakerGroup:1</serviceType>
+        <serviceId>urn:smartspeaker-audio:serviceId:SpeakerGroup</serviceId>
+        <controlURL>/ssdp/notfound</controlURL>
+        <eventSubURL>/ssdp/notfound</eventSubURL>
+        <SCPDURL>/ssdp/notfound</SCPDURL>
+      </service>
+    </serviceList>
+  </device>
+</root>
