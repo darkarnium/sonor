@@ -1,0 +1,122 @@
+#! /bin/sh
+anacapaHome=/opt
+anacapaPidFile=$anacapaHome/log/anacapa.pid
+anacapaBin="$anacapaHome/bin/anacapad"
+anacapaStart="$anacapaBin -c $anacapaHome/conf/anacapa.conf"
+
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:$anacapaHome/bin
+export PATH
+LD_LIBRARY_PATH=$anacapaHome/lib
+export LD_LIBRARY_PATH
+ANACAPA_LIBDIR=$anacapaHome/lib
+export ANACAPA_LIBDIR
+
+arch=`uname -m`
+#
+# CheckRunning
+# Check to see if Anacapa is running, and if so, set the "pid" var.
+#
+CheckRunning() {
+	pid=""
+	if [ -f $anacapaPidFile ]; then
+		pid=`cat $anacapaPidFile 2> /dev/null`
+	fi
+
+	if [ -n "$pid" ]; then
+		kill -0 $pid 2> /dev/null
+		if [ $? != 0 ]; then
+			rm -f $anacapaPidFile
+			pid=""
+		fi
+	else
+		rm -f $anacapaPidFile
+		pid=""
+	fi
+}
+
+#
+# Stop
+# Stop the anacapa and wait until the primary process is dead.
+#
+Stop() {
+	kill -15 $pid
+	CheckRunning
+	while [ -n "$pid" ]; do
+		sleep 1
+		CheckRunning
+	done
+}
+
+CheckRunning
+
+#
+# Hup
+# Hup the anacapa
+#
+Hup() {
+	kill -HUP $pid
+}
+
+case "$1" in
+	'start')
+		if [ -n "$pid" ]; then
+			echo "anacapad is already running (pid $pid)"
+			exit 1
+		fi
+		if [ "$arch" = "sh4" ]; then
+			/sbin/gdbserver 10.10.1.237:1234 $anacapaStart -d 10
+		else
+			gdb $SONOS_GDB_ARGS --args $anacapaStart -d 10
+		fi
+		exit $?
+		;;
+
+	'start-demo')
+		if [ -n "$pid" ]; then
+			echo "anacapad is already running (pid $pid)"
+			exit 1
+		fi
+
+		exec $anacapaStart
+		;;
+
+	'restart')
+		if [ -n "$pid" ]; then
+			Stop
+		fi
+		if [ "$arch" = "sh4" ]; then
+			/sbin/gdbserver 10.10.1.237:1234 $anacapaStart -d 10
+		else
+			gdb $SONOS_GDB_ARGS --args $anacapaStart -d 10
+		fi
+		exit $?
+		;;
+
+	'restart-demo')
+		if [ -n "$pid" ]; then
+			Stop
+		fi
+
+		$anacapaStart
+		exit $?
+		;;
+
+	'stop')
+		if [ -n "$pid" ]; then
+			Stop
+		fi
+		exit 0
+		;;
+
+	'hup')
+		if [ -n "$pid" ]; then
+			Hup
+		fi
+		exit 0
+		;;
+
+	*)
+		echo "Usage: $0 { start | start-demo | stop | restart | restart-demo | hup }"
+		exit 1
+		;;
+esac

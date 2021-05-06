@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <serviceStateTable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_ServiceDescriptorList</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_ServiceTypeList</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>ServiceId</name>
+      <dataType>ui4</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ServiceListVersion</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>SessionId</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>Username</name>
+      <dataType>string</dataType>
+    </stateVariable>
+  </serviceStateTable>
+  <actionList>
+      <action>
+        <name>GetSessionId</name>
+        <argumentList>
+          <argument>
+            <name>ServiceId</name>
+            <direction>in</direction>
+            <relatedStateVariable>ServiceId</relatedStateVariable>
+          </argument>
+          <argument>
+            <name>Username</name>
+            <direction>in</direction>
+            <relatedStateVariable>Username</relatedStateVariable>
+          </argument>
+          <argument>
+            <name>SessionId</name>
+            <direction>out</direction>
+            <relatedStateVariable>SessionId</relatedStateVariable>
+          </argument>
+        </argumentList>
+      </action>
+    <action>
+      <name>ListAvailableServices</name>
+      <argumentList>
+        <argument>
+          <name>AvailableServiceDescriptorList</name>
+          <direction>out</direction>
+          <relatedStateVariable>A_ARG_TYPE_ServiceDescriptorList</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>AvailableServiceTypeList</name>
+          <direction>out</direction>
+          <relatedStateVariable>A_ARG_TYPE_ServiceTypeList</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>AvailableServiceListVersion</name>
+          <direction>out</direction>
+          <relatedStateVariable>ServiceListVersion</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>UpdateAvailableServices</name>
+    </action>
+  </actionList>
+</scpd>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <serviceStateTable>
+    <stateVariable sendEvents="yes">
+      <name>AvailableSoftwareUpdate</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ZoneGroupState</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ThirdPartyMediaServersX</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>AlarmRunSequence</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>MuseHouseholdId</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ZoneGroupName</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ZoneGroupID</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>ZonePlayerUUIDsInGroup</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UpdateType</name>
+      <dataType>string</dataType>
+      <allowedValueList>
+        <allowedValue>All</allowedValue>
+        <allowedValue>Software</allowedValue>
+      </allowedValueList>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_CachedOnly</name>
+      <dataType>boolean</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UpdateItem</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UpdateURL</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UpdateFlags</name>
+      <dataType>ui4</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UpdateExtraOptions</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_Version</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_MemberID</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_UnresponsiveDeviceActionType</name>
+      <dataType>string</dataType>
+      <allowedValueList>
+        <allowedValue>Remove</allowedValue>
+        <allowedValue>TopologyMonitorProbe</allowedValue>
+        <allowedValue>VerifyThenRemoveSystemwide</allowedValue>
+      </allowedValueList>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>DiagnosticID</name>
+      <dataType>ui4</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_IncludeControllers</name>
+      <dataType>boolean</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_Origin</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_MobileDeviceName</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_MobileDeviceUDN</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>A_ARG_TYPE_MobileIPAndPort</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>AreasUpdateID</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>SourceAreasUpdateID</name>
+      <dataType>string</dataType>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>NetsettingsUpdateID</name>
+      <dataType>string</dataType>
+    </stateVariable>
+  </serviceStateTable>
+  <actionList>
+    <action>
+      <name>CheckForUpdate</name>
+      <argumentList>
+        <argument>
+          <name>UpdateType</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_UpdateType</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>CachedOnly</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_CachedOnly</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>Version</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_Version</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>UpdateItem</name>
+          <direction>out</direction>
+          <relatedStateVariable>A_ARG_TYPE_UpdateItem</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>BeginSoftwareUpdate</name>
+      <argumentList>
+        <argument>
+          <name>UpdateURL</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_UpdateURL</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>Flags</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_UpdateFlags</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>ExtraOptions</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_UpdateExtraOptions</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>ReportUnresponsiveDevice</name>
+      <argumentList>
+        <argument>
+          <name>DeviceUUID</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_MemberID</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>DesiredAction</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_UnresponsiveDeviceActionType</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>ReportAlarmStartedRunning</name>
+    </action>
+    <action>
+      <name>SubmitDiagnostics</name>
+      <argumentList>
+        <argument>
+          <name>DiagnosticID</name>
+          <direction>out</direction>
+          <relatedStateVariable>DiagnosticID</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>IncludeControllers</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_IncludeControllers</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>Type</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_Origin</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>RegisterMobileDevice</name>
+      <argumentList>
+        <argument>
+          <name>MobileDeviceName</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_MobileDeviceName</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>MobileDeviceUDN</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_MobileDeviceUDN</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>MobileIPAndPort</name>
+          <direction>in</direction>
+          <relatedStateVariable>A_ARG_TYPE_MobileIPAndPort</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>GetZoneGroupAttributes</name>
+      <argumentList>
+        <argument>
+          <name>CurrentZoneGroupName</name>
+          <direction>out</direction>
+          <relatedStateVariable>ZoneGroupName</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>CurrentZoneGroupID</name>
+          <direction>out</direction>
+          <relatedStateVariable>ZoneGroupID</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>CurrentZonePlayerUUIDsInGroup</name>
+          <direction>out</direction>
+          <relatedStateVariable>ZonePlayerUUIDsInGroup</relatedStateVariable>
+        </argument>
+        <argument>
+          <name>CurrentMuseHouseholdId</name>
+          <direction>out</direction>
+          <relatedStateVariable>MuseHouseholdId</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+    <action>
+      <name>GetZoneGroupState</name>
+      <argumentList>
+        <argument>
+          <name>ZoneGroupState</name>
+          <direction>out</direction>
+          <relatedStateVariable>ZoneGroupState</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+  </actionList>
+</scpd>

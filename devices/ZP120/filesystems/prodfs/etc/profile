@@ -1,0 +1,18 @@
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+if [ -f /proc/sonos-lock/fallback_state ] ; then
+	if [ "`cat /proc/sonos-lock/fallback_state`" != "0" ]; then
+		PS1='Fallback# ' ;
+	else
+		PS1='# ' ;
+	fi
+else
+	PS1='# ' ;
+fi
+
+export PATH PS1
+
+umask 022
+
