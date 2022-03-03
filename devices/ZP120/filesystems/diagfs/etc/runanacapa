@@ -1,0 +1,27 @@
+#!/bin/sh
+while [ -f /var/run/waitforip ]; do
+    sleep 1
+done
+if [ -f /var/run/upgradeinfo ]; then
+    mkdir /tmp
+    rm /jffs/upgrade_tmp_prev.log
+    mv /tmp/upgrade.log /jffs/upgrade_tmp_prev.log
+    echo Running upgrade ...
+    /bin/upgrade >> /tmp/upgrade.log 2>&1
+    rr=$?
+    echo RESULT = $rr >> /tmp/upgrade.log
+    rm /var/run/upgradeinfo
+    exit $rr
+fi
+for X in /tmp/smb/*
+do 
+    if [ -d "$X" ] 
+    then
+        umount "$X"
+        rmdir "$X"
+    fi
+done
+while [ -f /var/run/stopanacapa ]; do
+    sleep 10
+done
+exec /opt/bin/anacapactl start-demo

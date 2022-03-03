@@ -1,0 +1,6 @@
+<Services>
+  <Service Id="254" Name="TuneIn" Version="1.1" Uri="http://legato.radiotime.com/Radio.asmx" SecureUri="http://legato.radiotime.com/Radio.asmx" ContainerType="MService" Capabilities="0">
+    <Policy Auth="Anonymous" PollInterval="0"/>
+    <Presentation />
+  </Service>
+</Services>

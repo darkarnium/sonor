@@ -1,0 +1,8 @@
+# MIME type			Extension
+text/html			htm
+text/html			html
+text/xml			xml
+text/xml			xsl
+text/css			css
+text/javascript			js
+image/png			png 

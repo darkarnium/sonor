@@ -1,0 +1,6 @@
+#!/bin/sh
+# Preserve seed
+/etc/init.d/Krandom
+sync
+sleep 1
+sync

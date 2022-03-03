@@ -1,0 +1,40 @@
+#! /bin/sh
+# /etc/init.d/sysklogd: start system and kernel log daemons.
+#
+# chkconfig: 2345 10 90
+#
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+test -f /sbin/klogd || exit 0
+test -f /sbin/syslogd || exit 0
+
+# Options for start/restart the daemons
+#   For remote UDP logging use SYSLOGD="-r"
+#
+SYSLOGD=""
+
+#  Use KLOGD="-k /boot/System.map-$(uname -r)" to specify System.map
+#
+KLOGD=""
+
+case "$1" in
+  start)
+    echo -n "Starting system log daemon: syslogd"
+    start-stop-daemon -S -x /sbin/syslogd
+    echo -n " klogd"
+    start-stop-daemon -S -x /sbin/klogd
+    echo "."
+    ;;
+  stop)
+    echo -n "Stopping system log daemon: klogd"
+    start-stop-daemon -K -x /sbin/klogd
+    echo -n " syslogd"
+    start-stop-daemon -K -x /sbin/syslogd
+    echo "."
+    ;;
+  *)
+    echo "Usage: /etc/init.d/sysklogd {start|stop}"
+    exit 1
+esac
+
+exit 0

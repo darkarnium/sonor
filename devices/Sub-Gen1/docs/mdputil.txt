@@ -1,0 +1,27 @@
+mdp[0x19]   | HAS_HWFEATURES | CONSOLE_ENABLE | KERNEL_PRINTK_ENABLE
+
+-B
+    do something with MD5, RSA to mdp and loaded key in mtdblock0
+
+-F
+    Set flags(0x19)
+    (perform and/or operations to 0x19 bytes of mdp)
+
+
+-I
+    reset mdp buf to default. 
+
+-L 
+    ?
+
+-M
+    ?
+
+-s
+    set new serial number
+
+-w 
+    write
+
+-f 
+    force write, usually used with -w to force upgrade device info when a valid one already exists.

@@ -1,0 +1,62 @@
+#!/bin/sh
+#
+# nscd:		Starts the Name Service Cache Daemon
+#
+# description:  This is a daemon which handles passwd and group lookups
+#		for running programs and caches the results for the next
+#		query.  You should start this daemon only if you use
+#		slow Services like NIS or NIS+
+
+# Sanity checks.
+[ -f /etc/nscd.conf ] || exit 0
+[ -x /usr/sbin/nscd ] || exit 0
+
+# nscd does not run on any kernel lower than 2.2.0 because of threading
+# problems, so we require that in first place.
+case `uname -r` in
+    2.[0-1].*|1.*)
+	# This is not ok
+	exit 0
+    ;;
+esac
+
+RETVAL=0
+case "$1" in
+    start)
+	secure=""
+	for table in passwd group
+	do
+		if egrep '^'$table':.*nisplus' /etc/nsswitch.conf >/dev/null
+		then
+			/usr/sbin/nscd_nischeck $table ||
+				secure="$secure -S $table,yes"
+		fi
+	done
+        echo -n "Starting Name Service Cache Daemon: "
+	echo "nscd."
+	start-stop-daemon --start --quiet --exec /usr/sbin/nscd -- $secure
+	RETVAL=$?
+	;;
+    stop)
+	echo -n "Stopping Name Service Cache Daemon: "
+	echo nscd.
+	/usr/sbin/nscd -K
+	RETVAL=$?
+        ;;
+    reload)
+	echo "Reloading Name Service Cache Daemon configuration."
+	start-stop-daemon --stop --signal 1 --quiet --oknodo --exec /usr/sbin/nscd
+	RETVAL=$?
+	;;
+    force-reload)
+        $0 stop
+        $0 start
+        ;;
+    restart)
+	$0 force-reload
+	;;
+    *)
+	echo "Usage: /etc/init.d/nscd {start|stop|reload|force-reload|restart}"
+	;;
+esac
+exit $RETVAL

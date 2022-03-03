@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+   <specVersion>
+      <major>1</major>
+      <minor>0</minor>
+   </specVersion>
+   <serviceStateTable>
+      <stateVariable sendEvents="no">
+         <name>A_ARG_TYPE_Seed</name>
+         <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+         <name>A_ARG_TYPE_Code</name>
+         <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+         <name>A_ARG_TYPE_MID</name>
+         <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+         <name>A_ARG_TYPE_DID</name>
+         <dataType>string</dataType>
+      </stateVariable>
+   </serviceStateTable>
+   <actionList>
+      <action>
+         <name>QPlayAuth</name>
+         <argumentList>
+            <argument>
+               <name>Seed</name>
+               <direction>in</direction>
+               <relatedStateVariable>A_ARG_TYPE_Seed</relatedStateVariable>
+            </argument>
+            <argument>
+               <name>Code</name>
+               <direction>out</direction>
+               <relatedStateVariable>A_ARG_TYPE_Code</relatedStateVariable>
+            </argument>
+            <argument>
+               <name>MID</name>
+               <direction>out</direction>
+               <relatedStateVariable>A_ARG_TYPE_MID</relatedStateVariable>
+            </argument>
+            <argument>
+               <name>DID</name>
+               <direction>out</direction>
+               <relatedStateVariable>A_ARG_TYPE_DID</relatedStateVariable>
+            </argument>
+         </argumentList>
+      </action>
+   </actionList>
+</scpd>

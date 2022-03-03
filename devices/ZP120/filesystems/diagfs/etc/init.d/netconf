@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+start)
+/etc/Configure
+;;
+
+stop)
+;;
+
+*)
+                echo "Usage: /etc/init.d/netconf {start|stop}"
+                exit 1
+esac
+
+exit 0

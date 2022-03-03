@@ -1,0 +1,8 @@
+#!/bin/sh
+echo "Initializing random number generator..."
+random_seed=/jffs/random-seed
+# Carry a random seed from start-up to start-up
+# Load and then save the whole entropy pool
+if [ -f $random_seed ]; then
+    cat $random_seed >/dev/urandom
+fi
