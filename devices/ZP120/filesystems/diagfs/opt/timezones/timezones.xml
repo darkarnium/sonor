@@ -1,0 +1,166 @@
+<TimeZoneRules Version="8" >
+  <TimeZones>
+    <TimeZone ID="0" GMTBias="720" />
+    <TimeZone ID="1" GMTBias="660" />
+    <TimeZone ID="2" GMTBias="600" />
+    <TimeZone ID="3" GMTBias="540" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="4" GMTBias="480" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="5" GMTBias="420" />
+    <TimeZone ID="6" GMTBias="420" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="2" Bias="0" />
+      <DaylightTime Month="4" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="7" GMTBias="420" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="8" GMTBias="360" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="2" Bias="0" />
+      <DaylightTime Month="4" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="9" GMTBias="360" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="10" GMTBias="360" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="2" Bias="0" />
+      <DaylightTime Month="4" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="11" GMTBias="360" />
+    <TimeZone ID="12" GMTBias="300" />
+    <TimeZone ID="13" GMTBias="300" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="14" GMTBias="300" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="15" GMTBias="240" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="16" GMTBias="240" />
+    <TimeZone ID="17" GMTBias="240" >
+      <StandardTime Month="5" DayOfWeek="0" Day="2" Hour="0" Bias="0" />
+      <DaylightTime Month="8" DayOfWeek="0" Day="2" Hour="0" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="18" GMTBias="210" >
+      <StandardTime Month="11" DayOfWeek="0" Day="1" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="2" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="19" GMTBias="180" >
+      <StandardTime Month="2" DayOfWeek="0" Day="3" Hour="0" Bias="0" />
+      <DaylightTime Month="10" DayOfWeek="0" Day="3" Hour="0" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="20" GMTBias="180" />
+    <TimeZone ID="21" GMTBias="180" >
+      <StandardTime Month="10" DayOfWeek="6" Day="5" Hour="23" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="6" Day="5" Hour="22" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="22" GMTBias="120" />
+    <TimeZone ID="23" GMTBias="60" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="1" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="0" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="24" GMTBias="60" />
+    <TimeZone ID="25" GMTBias="0" />
+    <TimeZone ID="26" GMTBias="0" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="2" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="1" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="27" GMTBias="-60" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="3" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="28" GMTBias="-60" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="3" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="29" GMTBias="-60" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="3" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="30" GMTBias="-60" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="3" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="31" GMTBias="-60" />
+    <TimeZone ID="32" GMTBias="-120" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="4" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="3" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="33" GMTBias="-120" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="4" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="3" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="34" GMTBias="-120" />
+    <TimeZone ID="35" GMTBias="-120" />
+    <TimeZone ID="36" GMTBias="-120" >
+      <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="4" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="0" Day="5" Hour="3" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="37" GMTBias="-120">
+        <StandardTime Month="10" DayOfWeek="0" Day="5" Hour="2" Bias="0" />
+        <DaylightTime Month="3" DayOfWeek="5" Day="4" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="38" GMTBias="-180" />
+    <TimeZone ID="39" GMTBias="-180" />
+    <TimeZone ID="40" GMTBias="-180" />
+    <TimeZone ID="41" GMTBias="-180" />
+    <TimeZone ID="42" GMTBias="-210" >
+      <StandardTime Month="9" DayOfWeek="6" Day="4" Hour="0" Bias="0" />
+      <DaylightTime Month="3" DayOfWeek="4" Day="4" Hour="0" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="43" GMTBias="-240" />
+    <TimeZone ID="44" GMTBias="-240" />
+    <TimeZone ID="45" GMTBias="-270" />
+    <TimeZone ID="46" GMTBias="-300" />
+    <TimeZone ID="47" GMTBias="-300" />
+    <TimeZone ID="48" GMTBias="-330" />
+    <TimeZone ID="49" GMTBias="-345" />
+    <TimeZone ID="50" GMTBias="-360" />
+    <TimeZone ID="51" GMTBias="-360" />
+    <TimeZone ID="52" GMTBias="-360" />
+    <TimeZone ID="53" GMTBias="-390" />
+    <TimeZone ID="54" GMTBias="-420" />
+    <TimeZone ID="55" GMTBias="-420" />
+    <TimeZone ID="56" GMTBias="-480" />
+    <TimeZone ID="57" GMTBias="-480" />
+    <TimeZone ID="58" GMTBias="-480" />
+    <TimeZone ID="59" GMTBias="-480" />
+    <TimeZone ID="60" GMTBias="-480" />
+    <TimeZone ID="61" GMTBias="-540" />
+    <TimeZone ID="62" GMTBias="-540" />
+    <TimeZone ID="63" GMTBias="-540" />
+    <TimeZone ID="64" GMTBias="-570" >
+      <StandardTime Month="4" DayOfWeek="0" Day="1" Hour="3" Bias="0" />
+      <DaylightTime Month="10" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="65" GMTBias="-570" />
+    <TimeZone ID="66" GMTBias="-600" />
+    <TimeZone ID="67" GMTBias="-600" >
+      <StandardTime Month="4" DayOfWeek="0" Day="1" Hour="3" Bias="0" />
+      <DaylightTime Month="10" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="68" GMTBias="-600" />
+    <TimeZone ID="69" GMTBias="-600" >
+      <StandardTime Month="4" DayOfWeek="0" Day="1" Hour="3" Bias="0" />
+      <DaylightTime Month="10" DayOfWeek="0" Day="1" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="70" GMTBias="-600" />
+    <TimeZone ID="71" GMTBias="-660" />
+    <TimeZone ID="72" GMTBias="-720" >
+      <StandardTime Month="4" DayOfWeek="0" Day="1" Hour="3" Bias="0" />
+      <DaylightTime Month="9" DayOfWeek="0" Day="5" Hour="2" Bias="-60" />
+    </TimeZone>
+    <TimeZone ID="73" GMTBias="-720" />
+    <TimeZone ID="74" GMTBias="-780" />
+  </TimeZones>
+</TimeZoneRules>

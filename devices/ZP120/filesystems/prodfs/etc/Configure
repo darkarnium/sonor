@@ -1,0 +1,99 @@
+#!/bin/sh
+
+mount -t proc proc proc
+
+/sbin/ifconfig lo 127.0.0.1 up
+
+mount -t ramfs ramfs /ramdisk
+mkdir -m 777 /ramdisk/var
+mkdir -m 777 /ramdisk/var/run
+mkdir -m 777 /ramdisk/var/log
+mkdir -m 777 /ramdisk/tmp
+mkdir -m 777 /ramdisk/tmp/pub
+mkdir -m 777 /ramdisk/optlog
+mkdir -m 777 /ramdisk/smb
+
+if [ -f /bin/repartition.sh ]; then
+  sh /bin/repartition.sh
+fi
+
+mount -t jffs2 -o noatime /dev/nandjffs /jffs
+if [ $? -ne 0 ]
+then
+    if [ -f /bin/formatjffs ]; then
+        echo "Reformat jffs" >> /opt/log/repartition.log
+        /bin/formatjffs
+        mount -t jffs2 -o noatime /dev/nandjffs /jffs
+    fi
+fi
+
+/etc/init.d/Srandom
+
+/sbin/insmod /modules/chk_driver.o
+/sbin/insmod /modules/audiodev.o
+
+/wifi/netstartd --resetcheckonly
+
+mkdir -p /jffs/app/run
+mkdir -p /jffs/app/log
+mkdir -p /jffs/app/debug
+mkdir -p /jffs/app/settings
+mkdir -p /jffs/sys/run
+mkdir -p /jffs/sys/log
+mkdir -p /jffs/sys/debug
+mkdir -p /jffs/sys/settings
+mkdir -p /jffs/net/run
+mkdir -p /jffs/net/log
+mkdir -p /jffs/net/debug
+mkdir -p /jffs/net/settings
+mkdir -p /jffs/persist
+
+/bin/mdputil -B
+
+HOSTNAME=Sonos-`/bin/mdputil | /usr/sbin/keyval ^SERIAL | /usr/bin/cut -c 1-12`
+/bin/hostname $HOSTNAME
+
+if [ -f /jffs/Configure ]; then
+  echo "Running custom Configure..."
+  exec /jffs/Configure
+fi
+
+echo 262143 > /proc/sys/net/core/rmem_max
+echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+
+echo 32768 36863 > /proc/sys/net/ipv4/ip_local_port_range
+
+wifiType=N
+
+/sbin/insmod /wifi/$wifiType/ath_hal.o
+/sbin/insmod /wifi/$wifiType/ath_driver.o
+
+if [ -e /wifi/bridge-ppc.o ]; then
+    /sbin/insmod /wifi/bridge-ppc.o
+fi
+
+/usr/sbin/setmac
+
+touch /var/run/waitforip
+
+if [ -f /etc/unlocked_build_flag -o -e /jffs/system/Configure.dev ]; then
+    /etc/scripts/run_sshd.sh
+
+    ln -s /opt/htdocs_locked /tmp/htdocs_locked
+
+    touch /tmp/device_unlocked_flag
+fi
+
+if [ -f /jffs/system/Configure.dev ]; then
+    sh /jffs/system/Configure.dev
+fi
+
+if [ -s /jffs/hosts ]; then
+    touch /jffs/hosts
+else
+    cp /etc/hosts.orig /jffs/hosts
+fi
+
+/etc/init.d/Krandom
+
+echo "Configure script complete."

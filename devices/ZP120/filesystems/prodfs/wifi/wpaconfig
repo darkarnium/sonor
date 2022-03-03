@@ -1,0 +1,87 @@
+#!/bin/sh
+
+if [ "${#1}" -eq "0" ]; then
+    echo "usage: ${0} <settings file> [wpa config file]"
+    exit
+fi
+
+if [ "${#2}" -ne "0" ]; then
+    WPACONFIG=${2}
+else
+    WPACONFIG=/var/run/wpa_supplicant.conf
+fi
+
+if [ -f /jffs/debug/wpa_proto ]; then
+    WPAPROTO=`cat /jffs/debug/wpa_proto`
+fi
+if [ -f /jffs/debug/wpa_ptk ]; then
+    WPAPTK=`cat /jffs/debug/wpa_ptk`
+fi
+if [ -f /jffs/debug/wpa_gtk ]; then
+    WPAGTK=`cat /jffs/debug/wpa_gtk`
+fi
+
+echo "eapol_version=1"    >  ${WPACONFIG}
+echo "ap_scan=1"          >> ${WPACONFIG}
+
+print_entry()
+{
+    SSIDHEX=$1
+    KEYHEX=$2
+
+    if [ ${#KEYHEX} -gt "15" ] && [ ${#KEYHEX} -lt "129" ]; then
+	echo "network={"          >> ${WPACONFIG}
+	echo "ssid=${SSIDHEX}"    >> ${WPACONFIG}
+	echo "scan_ssid=1"        >> ${WPACONFIG}
+	echo "psk=${KEYHEX}"      >> ${WPACONFIG}
+	if [ "${#WPAPROTO}" -ne "0" ];then
+	    echo "proto=${WPAPROTO}"  >> ${WPACONFIG}
+	fi
+	if [ "${#WPAPTK}" -ne "0" ];then
+	    echo "pairwise=${WPAPTK}" >> ${WPACONFIG}
+	fi
+	if [ "${#WPAGTK}" -ne "0" ];then
+	    echo "group=${WPAGTK}"    >> ${WPACONFIG}
+	fi
+	echo "priority=2"         >> ${WPACONFIG}
+	echo "}"                  >> ${WPACONFIG}
+    fi
+
+    if [ ${#KEYHEX} -eq "10" ] || [ ${#KEYHEX} -eq "20" ] || [ ${#KEYHEX} -eq "26" ] || [ ${#KEYHEX} -eq "52" ]; then
+	echo "network={"          >> ${WPACONFIG}
+	echo "ssid=${SSIDHEX}"    >> ${WPACONFIG}
+	echo "scan_ssid=1"        >> ${WPACONFIG}
+	echo "wep_key0=${KEYHEX}" >> ${WPACONFIG}
+	echo "wep_tx_keyidx=0"    >> ${WPACONFIG}
+	echo "key_mgmt=NONE"      >> ${WPACONFIG}
+	echo "priority=1"         >> ${WPACONFIG}
+	echo "}"                  >> ${WPACONFIG}
+    fi
+
+    echo "network={"          >> ${WPACONFIG}
+    echo "ssid=${SSIDHEX}"    >> ${WPACONFIG}
+    echo "scan_ssid=1"        >> ${WPACONFIG}
+    echo "key_mgmt=NONE"      >> ${WPACONFIG}
+    echo "}"                  >> ${WPACONFIG}
+
+    /wifi/athconfig stassidlistadd ath0 ${SSIDHEX} ${#KEYHEX}
+}
+
+/wifi/athconfig stassidlistclr ath0
+
+if [ "${SSID_FILE}" -eq "1" ];
+then
+    while read LINE
+    do
+        SSIDHEX=`echo "${LINE}" | /usr/sbin/keyval ^SSID | cut -d: -f 1`
+        KEYHEX=`echo "${LINE}" | /usr/sbin/keyval ^SSID | cut -d: -f 2`
+
+        if [ "${#SSIDHEX}" -ne "0" ]; then
+	    print_entry ${SSIDHEX} ${KEYHEX}
+        fi
+    done < ${1}
+else
+    SSIDHEX=`/usr/sbin/keyval ^NFWSSID ${1}`
+    KEYHEX=`/usr/sbin/keyval ^NFWPwd ${1}`
+    print_entry ${SSIDHEX} ${KEYHEX}
+fi

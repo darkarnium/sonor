@@ -1,0 +1,7 @@
+rootfs / rootfs rw 0 0
+/dev/root / ext3 rw 0 0
+/proc /proc proc rw 0 0
+usbdevfs /proc/bus/usb usbdevfs rw 0 0
+/dev/hda1 /boot ext3 rw 0 0
+none /dev/pts devpts rw 0 0
+none /dev/shm tmpfs rw 0 0

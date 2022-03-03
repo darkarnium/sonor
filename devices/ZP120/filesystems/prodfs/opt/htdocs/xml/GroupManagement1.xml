@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+    <specVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </specVersion>
+    <serviceStateTable>
+      <stateVariable sendEvents="no">
+        <name>A_ARG_TYPE_MemberID</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+        <name>A_ARG_TYPE_TransportSettings</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+        <name>A_ARG_TYPE_AVTransportURI</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+        <name>A_ARG_TYPE_BufferingResultCode</name>
+        <dataType>i4</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+        <name>A_ARG_TYPE_BootSeq</name>
+        <dataType>ui4</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="yes">
+        <name>GroupCoordinatorIsLocal</name>
+        <dataType>boolean</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="yes">
+        <name>LocalGroupUUID</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="yes">
+        <name>VirtualLineInGroupID</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="no">
+        <name>SourceAreaIds</name>
+        <dataType>string</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="yes">
+        <name>ResetVolumeAfter</name>
+        <dataType>boolean</dataType>
+      </stateVariable>
+      <stateVariable sendEvents="yes">
+        <name>VolumeAVTransportURI</name>
+        <dataType>string</dataType>
+      </stateVariable>
+    </serviceStateTable>
+    <actionList>
+	<action>
+	  <name>AddMember</name>
+	  <argumentList>
+	      <argument>
+		  <name>MemberID</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>A_ARG_TYPE_MemberID</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>BootSeq</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>A_ARG_TYPE_BootSeq</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>CurrentTransportSettings</name>
+		  <direction>out</direction>
+		  <relatedStateVariable>A_ARG_TYPE_TransportSettings</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>CurrentURI</name>
+		  <direction>out</direction>
+		  <relatedStateVariable>A_ARG_TYPE_AVTransportURI</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>GroupUUIDJoined</name>
+		  <direction>out</direction>
+		  <relatedStateVariable>LocalGroupUUID</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>ResetVolumeAfter</name>
+		  <direction>out</direction>
+		  <relatedStateVariable>ResetVolumeAfter</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>VolumeAVTransportURI</name>
+		  <direction>out</direction>
+		  <relatedStateVariable>VolumeAVTransportURI</relatedStateVariable>
+	      </argument>
+	  </argumentList>
+        </action>
+	<action>
+	  <name>RemoveMember</name>
+	  <argumentList>
+	      <argument>
+		  <name>MemberID</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>A_ARG_TYPE_MemberID</relatedStateVariable>
+	      </argument>
+	  </argumentList>
+        </action>
+	<action>
+	  <name>ReportTrackBufferingResult</name>
+	  <argumentList>
+	      <argument>
+		  <name>MemberID</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>A_ARG_TYPE_MemberID</relatedStateVariable>
+	      </argument>
+	      <argument>
+		  <name>ResultCode</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>A_ARG_TYPE_BufferingResultCode</relatedStateVariable>
+	      </argument>
+	  </argumentList>
+        </action>
+    <action>
+	  <name>SetSourceAreaIds</name>
+	  <argumentList>
+	      <argument>
+		  <name>DesiredSourceAreaIds</name>
+		  <direction>in</direction>
+		  <relatedStateVariable>SourceAreaIds</relatedStateVariable>
+	      </argument>
+	  </argumentList>
+        </action>
+    </actionList>
+</scpd>
